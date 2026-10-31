@@ -14,3 +14,6 @@ design/assets/veila-hero-desktop.jpg
 design/assets/veila-hero-mobile.jpg
 
 design/assets/veila-storefront-*.jpg
+
+# Local intermediate frames; the approved film is retained.
+design/assets/veila-hero-v2/frames/

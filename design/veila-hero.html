@@ -12,25 +12,37 @@
 :root{--ink:#283a2e;--cream:#f8f5ee;--sage:#61734f;--muted:#697161;--line:rgba(40,58,46,.2)}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}button,a,input{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #536a47;outline-offset:6px}a{color:inherit;text-decoration:none}.serif{font-family:'Cormorant Garamond',Georgia,serif}
 .hero{position:relative;isolation:isolate;width:100%;height:100svh;min-height:640px;overflow:hidden;background:#e6dfd1}
-.scene{position:absolute;inset:0;z-index:-3;overflow:hidden;pointer-events:none}.scene img{width:100%;height:100%;display:block;object-fit:cover;object-position:57% center;transform:translateX(10%)}.shade{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(248,245,238,.92) 0%,rgba(248,245,238,.8) 24%,rgba(248,245,238,.15) 49%,transparent 65%),linear-gradient(0deg,rgba(248,245,238,.95),transparent 20%,transparent 82%,rgba(248,245,238,.3))}
+.scene{position:absolute;inset:0;z-index:-3;overflow:hidden;pointer-events:none}.scene img,.scene canvas{width:100%;height:100%;display:block;object-fit:cover;object-position:57% center;transform:translateX(10%)}.shade{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(248,245,238,.92) 0%,rgba(248,245,238,.8) 24%,rgba(248,245,238,.15) 49%,transparent 65%),linear-gradient(0deg,rgba(248,245,238,.95),transparent 20%,transparent 82%,rgba(248,245,238,.3))}
 .nav{position:absolute;top:0;left:5%;right:5%;height:112px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;border-bottom:1px solid var(--line);z-index:3}.nav-links{display:flex;gap:28px}.nav button{background:none;border:0;padding:12px 0;min-height:44px;font-size:11px;color:var(--ink)}.brand{justify-self:center;display:flex;flex-direction:column;align-items:center}.brand-name{font-size:46px;letter-spacing:.13em;line-height:.9;padding-left:.13em}.brand-sub{font-size:8px;letter-spacing:.4em;padding-left:.4em;margin-top:10px}.nav-right{justify-self:end;display:flex;align-items:center;gap:25px}.bag-count{margin-left:7px;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid #8f9b83;border-radius:50%;font-size:9px}.mobile-menu{display:none!important}
 .copy{position:absolute;left:6%;top:50%;transform:translateY(-42%);max-width:44%;pointer-events:none}.copy button,.copy a{pointer-events:auto}.eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:13px;align-items:center;margin-bottom:26px}.eyebrow:before{content:'';width:27px;height:1px;background:#859479}.headline{font-weight:400;font-size:clamp(67px,6.8vw,110px);line-height:.94;letter-spacing:-.045em;margin:0 0 27px}.headline em{font-weight:400;color:var(--sage)}.intro{font-size:13px;line-height:1.9;max-width:295px;color:#53604c;margin:0 0 28px}.cta-row{display:flex;gap:27px;align-items:center}.primary{display:flex;align-items:center;gap:40px;background:var(--ink);color:var(--cream);border:1px solid var(--ink);padding:18px 22px;font-size:11px;transition:background .2s}.primary:hover{background:#42513b}.text-link{background:none;border:0;border-bottom:1px solid #8d9b81;padding:9px 0;min-height:44px;font-size:10px;color:var(--ink)}
-.scene-note{position:absolute;right:5%;top:145px;font-size:9px;letter-spacing:.2em;text-transform:uppercase}.bottom{position:absolute;bottom:26px;left:5%;right:5%;display:grid;grid-template-columns:1fr 270px 1fr;align-items:end;gap:30px}.signature{font-size:21px;line-height:1.15}.signature small{display:block;font-family:Manrope,Arial,sans-serif;font-size:8px;letter-spacing:.16em;margin-top:10px;color:var(--muted)}.interaction{text-align:center;max-width:100%;color:var(--ink)}.interaction label{display:block;font-size:9px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:7px}.touch-hint{display:none}.range-line{display:flex;gap:12px;align-items:center;height:32px}.range-line span{font-size:13px}.range-line input{display:block;width:100%;appearance:none;-webkit-appearance:none;height:2px;background:rgba(40,58,46,.3);cursor:ew-resize;touch-action:pan-y;margin:15px 0;border:0;border-radius:0}.range-line input::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border:1px solid var(--ink);background:var(--cream);border-radius:50%;box-shadow:0 0 0 8px transparent}.range-line input::-moz-range-thumb{width:12px;height:12px;background:var(--cream);border:1px solid var(--ink);border-radius:50%}.frame-info{display:flex;align-items:center;justify-content:flex-end;gap:20px}.frame-count{font-size:10px;font-variant-numeric:tabular-nums;letter-spacing:.08em}.frame-count span{opacity:.5}.fullscreen{background:rgba(248,245,238,.35);border:1px solid var(--line);width:44px;height:44px;display:grid;place-items:center;color:var(--ink);font-size:22px}.fullscreen:hover{background:rgba(248,245,238,.7)}.fullscreen[hidden]{display:none}.status{font-size:8px;letter-spacing:.1em;color:#65705d;min-height:12px;margin-top:4px}
+.scene-note{position:absolute;right:5%;top:145px;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
 .mobile-panel{display:none;position:absolute;top:90px;left:20px;right:20px;padding:20px;background:rgba(248,245,238,.97);border:1px solid var(--line);z-index:4}.mobile-panel.is-open{display:flex;gap:24px}.mobile-panel button{border:0;background:none;font-size:12px;padding:10px 0}.toast{position:fixed;bottom:110px;left:50%;transform:translate(-50%,10px);max-width:calc(100vw - 32px);width:max-content;background:#283a2e;color:#f8f5ee;padding:14px 20px;font-size:12px;line-height:1.6;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:8}.toast.visible{opacity:1;transform:translate(-50%,0)}
-@media(min-aspect-ratio:2/1){.scene img{object-position:57% 58%}.headline{font-size:clamp(70px,6vw,100px)}.copy{transform:translateY(-38%)}}
-@media(max-width:1050px){.nav{left:4%;right:4%;height:98px}.nav-links{gap:19px}.nav-right{gap:15px}.nav button{font-size:10px}.copy{left:5%;max-width:47%}.headline{font-size:75px}.scene-note{top:124px}.intro{font-size:12px;max-width:270px}.bottom{left:4%;right:4%;grid-template-columns:1fr 230px 1fr;gap:20px}.signature{font-size:18px}.primary{gap:25px}}
-@media(max-width:760px){.hero{min-height:720px}.nav{height:86px;left:22px;right:22px}.nav-links{display:none}.mobile-menu{display:block!important;justify-self:start}.brand-name{font-size:36px}.brand-sub{font-size:7px;margin-top:8px}.nav-right .ritual-link{display:none}.nav-right{gap:0}.nav button{font-size:10px}.scene{top:38%;height:55%;bottom:auto}.scene img{object-position:57% center;transform:none}.shade{background:linear-gradient(180deg,#f8f5ee 0%,rgba(248,245,238,.98) 24%,rgba(248,245,238,.4) 43%,transparent 62%,rgba(248,245,238,.12) 76%,#f8f5ee 95%)}.copy{top:116px;left:24px;right:24px;max-width:none;transform:none}.eyebrow{font-size:8px;letter-spacing:.16em;margin-bottom:15px}.eyebrow:before{width:20px}.headline{font-size:clamp(48px,12vw,68px);line-height:.94;margin-bottom:15px;letter-spacing:-.045em}.intro{font-size:11px;line-height:1.7;max-width:270px;margin-bottom:16px}.primary{font-size:10px;padding:13px 17px;gap:27px}.text-link{font-size:9px}.cta-row{gap:23px}.scene-note{display:none}.bottom{bottom:18px;left:24px;right:24px;grid-template-columns:1fr auto;gap:12px}.signature{display:none}.interaction{max-width:270px;text-align:left}.interaction label{font-size:8px}.mouse-hint{display:none}.touch-hint{display:inline}.frame-info{gap:13px;padding-bottom:12px}.frame-count{font-size:8px}.fullscreen{width:36px;height:36px;font-size:20px}.status{font-size:7px}.range-line{height:25px}.toast{bottom:100px}}
-@media(max-height:690px) and (min-width:761px){.nav{height:85px}.copy{transform:translateY(-35%)}.headline{font-size:70px;margin-bottom:19px}.eyebrow{margin-bottom:17px}.intro{margin-bottom:19px}.bottom{bottom:18px}.scene-note{top:115px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}.mouse-hint{display:none}.touch-hint{display:inline}}
+@media(min-aspect-ratio:2/1){.scene img,.scene canvas{object-position:57% 58%}.headline{font-size:clamp(70px,6vw,100px)}.copy{transform:translateY(-38%)}}
+@media(max-width:1050px){.nav{left:4%;right:4%;height:98px}.nav-links{gap:19px}.nav-right{gap:15px}.nav button{font-size:10px}.copy{left:5%;max-width:47%}.headline{font-size:75px}.scene-note{top:124px}.intro{font-size:12px;max-width:270px}.primary{gap:25px}}
+@media(max-width:760px){.hero{min-height:720px}.nav{height:86px;left:22px;right:22px}.nav-links{display:none}.mobile-menu{display:block!important;justify-self:start}.brand-name{font-size:36px}.brand-sub{font-size:7px;margin-top:8px}.nav-right .ritual-link{display:none}.nav-right{gap:0}.nav button{font-size:10px}.scene{top:38%;height:55%;bottom:auto}.scene img,.scene canvas{object-position:57% center;transform:none}.shade{background:linear-gradient(180deg,#f8f5ee 0%,rgba(248,245,238,.98) 24%,rgba(248,245,238,.4) 43%,transparent 62%,rgba(248,245,238,.12) 76%,#f8f5ee 95%)}.copy{top:116px;left:24px;right:24px;max-width:none;transform:none}.eyebrow{font-size:8px;letter-spacing:.16em;margin-bottom:15px}.eyebrow:before{width:20px}.headline{font-size:clamp(48px,12vw,68px);line-height:.94;margin-bottom:15px;letter-spacing:-.045em}.intro{font-size:11px;line-height:1.7;max-width:270px;margin-bottom:16px}.primary{font-size:10px;padding:13px 17px;gap:27px}.text-link{font-size:9px}.cta-row{gap:23px}.scene-note{display:none}.toast{bottom:100px}}
+@media(max-height:690px) and (min-width:761px){.nav{height:85px}.copy{transform:translateY(-35%)}.headline{font-size:70px;margin-bottom:19px}.eyebrow{margin-bottom:17px}.intro{margin-bottom:19px}.scene-note{top:115px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.scene canvas{position:absolute;inset:0}.scene canvas[hidden]{display:none}
 </style>
 <link rel="stylesheet" href="storefront.css">
 <link rel="stylesheet" href="veila-refined.css">
+<link rel="stylesheet" href="hero-refined.css">
 </head>
 <body>
 <a class="skip-link" href="#collection">Skip to collection</a>
 <main>
 <section class="hero" id="hero" aria-label="Veila Skin introduction">
-  <div class="scene" aria-hidden="true"><img id="bottle-frame" src="assets/veila-frames/frame-00.jpg" alt="" fetchpriority="high" width="1280" height="720"></div>
+  <div class="scene" id="bottle-viewer" aria-label="Veila serum with floating aloe, oats and dewdrops">
+    <div class="magic-layer magic-shadow" data-depth="-9" aria-hidden="true"></div>
+    <div class="magic-layer magic-oat" data-depth="-30" data-turn="-5"><img src="assets/veila-parallax/oat.png" alt="Golden oat stem" width="1536" height="1024"></div>
+    <div class="magic-layer magic-bottle" data-depth="18" data-turn="2.5"><img src="assets/veila-parallax/bottle.png" alt="Veila Dewdrop Daily Serum, aloe and hyaluronic acid, 30 ml" width="1024" height="1536" fetchpriority="high"></div>
+    <div class="magic-layer magic-aloe" data-depth="40" data-turn="-6"><img src="assets/veila-parallax/aloe.png" alt="Fresh aloe vera" width="1536" height="1024"></div>
+    <span class="magic-layer magic-dew dew-one" data-depth="48" aria-hidden="true"></span>
+    <span class="magic-layer magic-dew dew-two" data-depth="-36" aria-hidden="true"></span>
+    <span class="magic-layer magic-dew dew-three" data-depth="28" aria-hidden="true"></span>
+    <span class="magic-layer magic-note aloe-note" data-depth="24">01 / Aloe vera</span>
+    <span class="magic-layer magic-note oat-note" data-depth="-18">02 / Oat</span>
+  </div>
   <div class="shade" aria-hidden="true"></div>
   <header class="nav" aria-label="Main navigation">
     <nav class="nav-links" aria-label="Explore Veila"><button type="button" data-jump="collection">The collection</button><button type="button" data-jump="ingredients">The ingredients</button></nav>
@@ -42,15 +54,11 @@
   <section class="copy" aria-labelledby="headline">
     <div class="eyebrow">A moment, just for you</div>
     <h1 class="headline serif" id="headline">A little ritual.<br>A <em>softer</em> day.</h1>
-    <p class="intro">Your daily moment of care. Meet a simpler approach to your skincare ritual.</p>
+    <p class="intro">A little dew. A softer ritual. Meet our signature serum, with aloe and hyaluronic acid as its ingredient inspiration.</p>
     <div class="cta-row"><button class="primary" type="button" data-jump="collection">Explore Veila <span aria-hidden="true">↗</span></button><button class="text-link" type="button" data-jump="philosophy">Our philosophy</button></div>
   </section>
-  <div class="scene-note">VEILA · THE DAILY RITUAL</div>
-  <footer class="bottom">
-    <div class="signature serif">Skincare, at your pace.<small>THE ART OF TAKING A MOMENT</small></div>
-    <div class="interaction"><label for="ritual-progress"><span class="mouse-hint">Move your mouse to unfold the ritual</span><span class="touch-hint">Slide to unfold the ritual</span></label><div class="range-line"><span aria-hidden="true">←</span><input id="ritual-progress" type="range" min="0" max="47" step="1" value="0" aria-label="Bottle opening" aria-valuetext="Bottle closed"><span aria-hidden="true">→</span></div><div class="status" id="scene-status" role="status">YOUR MOMENT. YOUR PACE.</div></div>
-    <div class="frame-info"><div class="frame-count"><output id="frame-count" aria-hidden="true">01</output><span> / 48</span></div><button class="fullscreen" id="fullscreen-toggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">⛶</button></div>
-  </footer>
+  <div class="scene-note">DEWDROP DAILY SERUM · 30 ML</div>
+
 </section>
 <div class="editorial-strip"><span>VEILA / THE EVERYDAY COLLECTION</span><p class="serif">A softer kind of <em>everyday.</em></p><a href="#ingredients">Get to know what’s inside ↗</a></div>
 <section class="section collection" id="collection" aria-labelledby="collection-title">
@@ -77,61 +85,7 @@
 <div class="toast" id="preview-status" role="status" aria-live="polite"></div>
 <dialog class="shop-dialog" id="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Close product details" autofocus>×</button><div id="product-detail"></div></dialog>
 <dialog class="shop-dialog bag-dialog" id="bag-dialog" aria-labelledby="bag-title"><button type="button" class="dialog-close" data-close aria-label="Close shopping bag" autofocus>×</button><div class="bag-content"><p class="section-kicker">A moment of your own</p><h2 class="serif" id="bag-title">Your ritual bag.</h2><p class="bag-intro">Your collection, coming together. This preview bag is saved only in this browser.</p><div id="bag-items"></div><div class="bag-total"><span>Concept subtotal</span><strong id="bag-total">₹0</strong></div><p class="bag-intro">Shopping preview · Checkout isn't open yet. No orders or payments are taken.</p><button class="primary" type="button" data-continue>Continue exploring ↗</button></div></dialog>
-<script>
-(()=>{
-  const hero=document.getElementById('hero');
-  const image=document.getElementById('bottle-frame');
-  const range=document.getElementById('ritual-progress');
-  const counter=document.getElementById('frame-count');
-  const status=document.getElementById('scene-status');
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
-  const count=48;
-  const frames=new Array(count);
-  let target=0,displayed=0,scheduled=false,failed=false;
-  const frameURL=index=>'assets/veila-frames/frame-'+String(index).padStart(2,'0')+'.jpg';
-  frames[0]=image;
-  function render(){
-    scheduled=false;
-    if(frames[target]?.complete&&frames[target].naturalWidth&&target!==displayed){
-      displayed=target;image.src=frames[displayed].src;
-      counter.textContent=String(displayed+1).padStart(2,'0');
-      range.setAttribute('aria-valuetext',displayed<10?'Bottle closed':displayed<25?'Bottle opening':'Ingredients revealed');
-    }
-  }
-  function queue(){if(!scheduled){scheduled=true;requestAnimationFrame(render);}}
-  function setFrame(index){target=Math.max(0,Math.min(count-1,Math.round(index)));range.value=String(target);queue();}
-  // Load still images, not a video player. No animation runs when the pointer stops.
-  let next=1;
-  async function preload(){
-    while(next<count){
-      const index=next++;
-      const frame=new Image();frame.decoding='async';frame.src=frameURL(index);
-      frames[index]=frame;
-      try{await frame.decode();if(index===target)queue();}
-      catch{failed=true;status.textContent='SOME FRAMES COULD NOT LOAD';}
-    }
-  }
-  Promise.all(Array.from({length:4},()=>preload())).then(()=>{if(!failed)status.textContent='YOUR MOMENT. YOUR PACE.';});
-  hero.addEventListener('pointermove',event=>{
-    if(event.pointerType!=='mouse'||!finePointer.matches||reduce.matches)return;
-    if(event.target.closest('button,a,input,.mobile-panel,.interaction'))return;
-    const bounds=hero.getBoundingClientRect();
-    setFrame((event.clientX-bounds.left)/bounds.width*(count-1));
-  });
-  range.addEventListener('input',()=>setFrame(Number(range.value)));
-  const fullscreen=document.getElementById('fullscreen-toggle');
-  if(!document.fullscreenEnabled)fullscreen.hidden=true;
-  fullscreen.addEventListener('click',async()=>{
-    try{if(document.fullscreenElement)await document.exitFullscreen();else await hero.requestFullscreen();}
-    catch{status.textContent='FULLSCREEN IS NOT AVAILABLE IN THIS BROWSER';}
-  });
-  document.addEventListener('fullscreenchange',()=>{const active=!!document.fullscreenElement;fullscreen.setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');fullscreen.title=active?'Exit fullscreen':'Enter fullscreen';});
-  const menu=document.getElementById('menu-toggle');
-  menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Close −':'Menu +';document.getElementById('mobile-navigation').classList.toggle('is-open',open);});
-
-})();
-</script>
+<script src="hero-parallax.js"></script>
 <script src="storefront.js"></script>
 </body>
 </html>

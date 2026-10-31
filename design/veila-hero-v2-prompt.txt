@@ -1,0 +1,17 @@
+VEILA SKIN — REFINED HERO / 10 SECONDS
+
+Create one exactly 10-second, landscape 16:9 photorealistic luxury skincare product film from the attached bottle-reference.png. The reference is the first-frame visual and packaging identity. Keep the bottle design, VEILA SKIN branding, DEWDROP DAILY SERUM text, aloe + hyaluronic acid line, glass base, silver collar and ivory dropper bulb consistent and sharp. No text outside the bottle.
+
+The bottle stays right of centre on pale travertine. Keep the left 45% empty for website copy. Warm ivory studio, soft sage glass, subtle blush bounce, tactile real glass and metal, soft shadows, calm editorial lighting. Keep the entire bottle and raised dropper inside the frame: establish slightly wider framing before movement if needed. No hard black chrome reflections or plastic-looking surfaces.
+
+0–2 seconds: closed bottle, quiet establishing hold and a very subtle light sweep.
+2–4 seconds: silver collar turns gently, the single dropper rises vertically, revealing a realistic clear glass pipette. Bottle stays grounded and perfectly stable.
+4–7 seconds: one clear serum droplet forms on the pipette. A delicate aloe leaf and oat sprig frame the bottle from the sides in a restrained botanical reveal. No large objects forced through the bottle neck. Ingredients are visual motifs only.
+7–9 seconds: droplet falls naturally into the neck, dropper lowers and closes smoothly. Botanicals settle softly near the base.
+9–10 seconds: hold the finished closed product, matching the opening composition for a calm loop.
+
+One continuous shot, no cuts, no camera shake, no rapid orbit, no jitter, no label morphing, no duplicated caps, no hands or faces, no medical claims. Smooth ease-in/ease-out movement with realistic weight and very restrained motion blur. Silent. Highest available resolution, one output only. Do not generate extra variations. If exact 10 seconds is unsupported, report the available duration and cost before generating; an 8-second source can be retimed locally to 10 seconds.
+
+WEBSITE: mouse controls the scene position; no autoplay. Touch and keyboard slider. Interpolate position with requestAnimationFrame and stop once settled. Keep the film separately playable as a 10-second deliverable.
+
+STILL IMAGE: generated with the built-in image-generation tool from the existing serum photo. Direction: realistic frosted sage 30 ml dropper bottle, clear glass base, satin silver collar, ivory bulb, crisp front-of-pack type, warm travertine studio, right-aligned with left copy space.

@@ -11,7 +11,7 @@ Local preview only; user declined uploading design/media to Superdesign.
 
 ## Layout
 
-Fullscreen photographic hero with text on the left and bottle on the right. At narrow widths, text sits above the bottle. The bottle responds to mouse position; a slider supports touch and keyboard input. Forty-eight still frames replace video playback. Reduced-motion users control frames through the slider.
+Fullscreen photographic hero with text on the left and bottle on the right. At narrow widths, text sits above the bottle. The bottle responds to mouse position and settles when movement stops; a slider supports touch and keyboard input. The updated 10-second film features a sage glass dropper bottle, ivory bulb, satin silver collar and clear glass base. Two hundred and forty still frames replace video playback; eased cursor tracking and adjacent-frame blending smooth the movement. Reduced-motion users control frames through the slider.
 
 Below the hero: category navigation, search/sort toolbar, three-column product grid (two on mobile), ritual editorial, brand philosophy, FAQ, footer. Fifteen coordinated AI-generated photographs show distinct product types and proposed ingredient highlights on the packaging. Warm stone, oat, sage, blush and silver packaging connect the collection to the hero.
 
@@ -20,3 +20,7 @@ Below the hero: category navigation, search/sort toolbar, three-column product g
 Collection, philosophy and ritual controls navigate to their sections. Product dialogs expose size, texture, proposed ingredients, ritual position and concept availability. The browser-local demo bag supports add, quantities, removal and subtotal. No payment/checkout or order placement.
 
 Fifteen products span cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Every card shows ingredient chips and links to an interactive ingredient atelier with a product selector and individual ingredient notes. Product names, formulas, packaging and INR prices are illustrative concepts, labeled in the collection and details. No fabricated reviews, efficacy claims, certifications or shipping promises. User's reference: Sephora India skincare browsing structure; preserve Veila's original branding and visual language.
+
+
+### Current hero: photographic floating ingredients
+Use the transparent photographic layers in assets/veila-parallax. The bottle stays front-facing and moves gently with the pointer; aloe, oats and dewdrops move independently at different depths. Use small tilts, smooth easing and a warm ivory background. No literal 360-degree spin, autoplay or bottom control strip. The approved 10-second film is retained separately. Respect reduced-motion preferences.
