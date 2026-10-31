@@ -13,7 +13,7 @@
     if(opening<.76 || particles.length>=5 || time-lastDrop<170 || reduced.matches)return;
     lastDrop=time;
     const el=document.createElement('span');el.className='falling-serum';particleHost.append(el);
-    particles.push({el,start:time,from:.483-opening*.30,to:.278});
+    particles.push({el,start:time,from:.558-opening*.38,to:.278});
   }
   const paint = time => {
     frame=0;
@@ -21,14 +21,14 @@
     const ease=1-Math.exp(-dt/.18);
     x+=(tx-x)*ease;y+=(ty-y)*ease;opening+=(openTarget-opening)*(1-Math.exp(-dt/.22));
     for(const {el,depth,turn} of layers) el.style.transform=`translate3d(${(x*depth).toFixed(3)}px,${(y*depth*.7).toFixed(3)}px,0) rotate(${(x*turn).toFixed(3)}deg)`;
-    const lift=`translate3d(0,${(-opening*30).toFixed(3)}%,0)`;
+    const lift=`translate3d(0,${(-opening*38).toFixed(3)}%,0)`;
     cap.style.transform=lift;pipette.style.transform=lift;
     scene.dataset.motion=`${x.toFixed(3)},${y.toFixed(3)}`;scene.dataset.open=opening.toFixed(3);
     if(opening>.9&&!wasOpen){drop(time);wasOpen=true;}
     if(opening<.2)wasOpen=false;
     for(let i=particles.length-1;i>=0;i--){
       const p=particles[i],age=(time-p.start)/760;
-      if(age>=1 || opening<.55){p.el.remove();particles.splice(i,1);continue;}
+      if(age>=1 || opening<.76){p.el.remove();particles.splice(i,1);continue;}
       const fall=age*age;
       p.el.style.top=`${(p.from+(p.to-p.from)*fall)*100}%`;
       p.el.style.opacity=String(Math.min(age*9,1)*(1-Math.max(0,(age-.8)/.2)));
