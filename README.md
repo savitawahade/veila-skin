@@ -17,7 +17,7 @@ Visit http://127.0.0.1:4173/. No build or package installation is required. Goog
 ## Design and functionality
 
 - Full-viewport Google Flow video hero using the new 10-second Natural Serum Ritual film. Mouse movement scrubs the opening sequence with eased seeking; leaving the hero returns to the opening shot. The film is encoded with every frame independently seekable. A Play the ritual / Pause film button supports touch and keyboard, and playback pauses offscreen or when the tab is hidden. No autoplay. Reduced-motion preferences disable pointer scrubbing. The transparent, morphing water-drop CTA remains in place.
-- Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Fifteen coordinated AI-generated product photographs show the product type and proposed ingredient highlights directly on the packaging.
+- Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Coordinated product photographs show the product type and proposed ingredient highlights directly on the packaging. The ritual set reuses the same cleanser, serum and moisturiser images as the individual products.
 - Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
 - An eight-entry ingredient library with editorial photography, expandable explanations, source links and links into the corresponding product explorer. A dedicated Veila approach section explains ingredient transparency, routine information and concept status.
 - Visible ingredient chips on every card and an interactive ingredient atelier with a product selector and individual ingredient notes.
@@ -58,3 +58,14 @@ Open this repository folder in Antigravity. Edit the same source files, preview 
 ## Verification
 
 Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, cap opening and closing, bounded droplets, ingredient library links, desktop/mobile layout, removed controls and browser errors. The active Flow MP4 was verified as exactly 10 seconds at 1280×720, with mouse seeking, explicit playback and responsive framing.
+
+## Below-hero review improvements
+
+The first screen is intentionally preserved from `a473eae` (the pre-team design): hero markup, film, water-drop CTA, hero stylesheet and interaction scripts are unchanged. Review fixes apply below that screen only.
+
+- Product descriptions are 16px; secondary labels and ingredient chips are at least 12px. Text contrast and touch targets are improved, with a single-column catalog on small phones.
+- The serum catalogue uses the ivory dropper artwork; gel moisturiser imagery uses centella and clear gel. Cards, details, bag, ingredients and ritual sets reuse canonical product photographs. The hero film remains its existing version.
+- Expanding the catalog focuses the first newly revealed product. At the quantity limit, focus stays on an enabled control. Removal restores a useful focus target and bag updates are announced. Section jumps move focus to the destination.
+- Ingredient explanations are specific to the selected concept and do not imply tested product results.
+
+Verified unchanged first-screen computed styles at 1440px and 390px, mobile 16px/12px product text, product dialogs, collection expansion, quantity limit, bag removal, announcements, JavaScript syntax and clean browser error logs.

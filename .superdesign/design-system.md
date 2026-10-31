@@ -36,3 +36,8 @@ The entire Explore Veila CTA is a translucent water droplet, with a rounded body
 
 ### Current hero film
 The active hero uses the 10-second Google Flow Natural Serum Ritual film in assets/veila-hero-v3. Use the photographic scene with the bottle on the right and clear copy on the left. Mouse movement eases through the film; there is no autoplay. Provide an explicit Play the ritual / Pause film control for touch and keyboard, pause when offscreen, and respect reduced motion. The former independent bottle and ingredient layers are archived. Keep the transparent morphing water-drop CTA unchanged.
+
+### Current scope: preserve the first screen
+The user explicitly chose the pre-team hero (`a473eae`) and asked to keep it unchanged. Do not apply the later v4 film, playback controls, mouse-forward ritual or hero-layout changes. The active hero remains the original v3 composition and behavior.
+
+Apply the team review improvements below the hero: readable 16px product body text, 12px secondary labels/chips, stronger contrast, 44px controls, one-column small-phone cards, useful keyboard focus and bag announcements. Scope new color tokens to `.section,.editorial-strip,.site-footer,.shop-dialog` so first-screen colors remain identical. Reuse canonical individual product images in every product surface and the three-image ritual set. Ingredient education must retain the concept/formula distinction.

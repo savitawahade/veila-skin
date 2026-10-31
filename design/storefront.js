@@ -19,7 +19,7 @@
     ['gel','Meadow Dew Gel Moisturiser','Moisturisers','50 g',1190,'mask','A fresh gel texture in a soft sage jar.','Centella|Panthenol|Glycerin','Water-gel cream','The fresh-texture collection'],
     ['night','Moonlit Peptide Serum','Serums','30 ml',1590,'serum','A quiet final chapter for your evening shelf.','Peptides|Squalane|Glycerin','Silky serum','Evening serum collection']
   ];
-  for(const [id,name,category,size,price,photo,short,ingredients,texture,ritual] of additions){products.push({id,name,category,size,price,photo,short,tag:ritual,bg:'#ebe5d9',texture,ritual,description:short+' Considered packaging, a tactile finish, and a place in your everyday ritual.',ingredients:ingredients.split('|').join(', ')+' are proposed ingredient directions. The formula, suitability and application instructions are not finalized.',notes:ingredients.split('|').map(name=>({name,story:'A proposed part of the '+name.toLowerCase()+' ingredient story. Final selection and concentration will be defined during formulation.'}))});}
+  for(const [id,name,category,size,price,photo,short,ingredients,texture,ritual] of additions){products.push({id,name,category,size,price,photo,short,tag:ritual,bg:'#ebe5d9',texture,ritual,description:short+' Considered packaging, a tactile finish, and a place in your everyday ritual.',ingredients:ingredients.split('|').join(', ')+' are proposed ingredient directions. The formula, suitability and application instructions are not finalized.',notes:ingredients.split('|').map(name=>({name,story:''}))});}
   const note=(name,story)=>({name,story});
   const stories={
     cleanser:[note('Oat','The warm, oat-inspired starting point for our milky cleanser concept.'),note('Glycerin','A clear, understated note in the proposed formula direction.'),note('Aloe','Fresh green aloe shapes the botanical mood of this cleanser.')],
@@ -31,6 +31,25 @@
   };
   products.forEach(p=>{if(stories[p.id])p.notes=stories[p.id];});
   const ingredientEducation={"Hyaluronic acid": "A moisture-binding ingredient commonly used in hydrating skincare. Clear serum droplets illustrate its place in our Dewdrop concept.", "Aloe vera": "An ingredient used in lightweight moisturising skincare. Aloe is part of the proposed direction for our serum and milky cleanser.", "Oat": "Oat inspires our cleanser, serum and body care. Its final ingredient form is still being selected; colloidal oatmeal is a specific form used in soothing skincare.", "Glycerin": "A humectant used to attract moisture. A proposed ingredient in our cleanser, toner, body care and several other Veila essentials.", "Ceramides": "Lipids used in moisturisers to support the skin barrier. Part of the proposed direction for Soft Veil and Rice Cloud.", "Squalane": "An emollient oil used in moisturising skincare. Proposed for Soft Veil and Moonlit; the olive imagery is illustrative, not a sourcing claim.", "Panthenol": "Provitamin B5 is found in moisturising skincare. It features in the proposed ingredient stories for Meadow Dew and Dew Petal.", "Shea butter": "A butter used in moisturising products. It inspires the rich texture direction of our lip balm and body lotion.", "Aloe": "An ingredient used in lightweight moisturising skincare. Aloe is part of the proposed direction for our serum and milky cleanser."};
+  // Ingredient functions are educational, not efficacy claims for unfinished Veila formulas.
+  // Sources: EC inventory (tocopherol): https://ec.europa.eu/health/archive/ph_risk/committees/sccp/documents/out123cm_en.pdf
+  // EC JRC humectant table (betaine): https://publications.jrc.ec.europa.eu/repository/bitstream/JRC126061/jrc126061_pr_cosmetics_final.pdf
+  // Ferulic acid: https://cosmileeurope.eu/inci/detail/5628/ferulic-acid/
+  // Peptide definitions: https://pmc.ncbi.nlm.nih.gov/articles/PMC13054063/
+  // Centella ingredient forms: https://www.cir-safety.org/supplementaldoc/safety-assessment-centella-asiatica-derived-ingredients-used-cosmetics-1
+  Object.assign(ingredientEducation,{
+    'Rose water':'A water-based rose ingredient proposed for Morning Mist. It brings a watery ingredient direction to this essence; its specification and scent profile will be chosen during formulation.',
+    'Plant oils':'A family of oil ingredients proposed for the lip balm texture. The individual oils, their sources and the complete ingredient list have not been selected.',
+    'Vitamin E':'Vitamin E includes forms such as tocopherol, which is used as an antioxidant in cosmetic formulas. The form and concentration for each Veila product are still being selected.',
+    'Kaolin clay':'A mineral clay that gives this mask concept its clay texture. The finished formula and directions will determine how much to apply and how long to leave it on.',
+    'Green tea':'A botanical ingredient derived from Camellia sinensis. The extract type and concentration for Quiet Earth are still being selected; a plant name alone does not establish a finished product benefit.',
+    'Vitamin C derivative':'Vitamin C comes in different ingredient forms. First Light proposes a derivative, but the specific form, concentration and finished-formula performance are not yet confirmed.',
+    'Ferulic acid':'An ingredient used as an antioxidant in cosmetic formulas. It is proposed alongside vitamin C and vitamin E in First Light; the finished combination still needs development and testing.',
+    'Rice extract':'A rice-derived ingredient proposed for Rice Cloud and Dew Petal. The extract specification is still being selected; it is one ingredient direction, not a complete formula.',
+    'Betaine':'A humectant used to help retain moisture in cosmetic formulas. It is proposed alongside oat and glycerin in Cloud Bath; the complete cleansing system is still in development.',
+    'Centella':'Centella asiatica is a botanical used in cosmetic ingredient preparations. The exact extract for Meadow Dew has not been selected; its role in the finished gel will be assessed during formulation.',
+    'Peptides':'Short chains of amino acids used in different cosmetic ingredient preparations. Different peptides serve different roles; the specific ingredients and concentrations for Moonlit are still being selected.'
+  });
   products.forEach(p=>p.notes.forEach(n=>{if(ingredientEducation[n.name])n.story=ingredientEducation[n.name];}));
   const sun=products.find(p=>p.id==='sunscreen');
   sun.ingredients='Sunscreen concept only. UV filters, SPF, UVA protection and all performance claims require formulation and testing; none are confirmed. Glycerin and vitamin E are proposed supporting ingredients. Botanical props are decorative.';
@@ -43,7 +62,9 @@
   const dialog=document.getElementById('product-dialog'),bagDialog=document.getElementById('bag-dialog');
   let category='All',bag={},displayLimit=6;
   try{const saved=JSON.parse(localStorage.getItem('veila-concept-bag')||'{}');for(const p of products){if(Number.isInteger(saved?.[p.id])&&saved[p.id]>0)bag[p.id]=Math.min(saved[p.id],20);}}catch{}
-  function artwork(p,key){return `<img src="assets/veila-products/${p.id}-labelled.jpg" alt="${p.name}, with the product type and proposed ingredient highlights printed on the packaging" width="1254" height="1254" loading="lazy">`;}
+  function artwork(p,key){
+    if(p.id==='set')return `<span class="product-set" role="img" aria-label="The Daily Ritual Set: Cloud Milk Cleanser, Dewdrop Daily Serum and Soft Veil Moisturiser">${['cleanser','serum','cream'].map(id=>`<img src="assets/veila-products/${id}-labelled.jpg" alt="" width="1254" height="1254" loading="lazy">`).join('')}</span>`;
+    return `<img src="assets/veila-products/${p.id}-labelled.jpg" alt="${p.name}, with the product type and proposed ingredient highlights printed on the packaging" width="1254" height="1254" loading="lazy">`;}
   function ingredientChips(p){return `<div class="ingredient-chips" aria-label="Concept ingredients">${p.notes.map(n=>`<span>${n.name}</span>`).join('')}</div>`;}
   function render(){
     const q=search.value.trim().toLowerCase();let list=products.filter(p=>(category==='All'||p.category===category)&&[p.name,p.category,p.short,p.ingredients].join(' ').toLowerCase().includes(q));
@@ -56,7 +77,11 @@
   function setCategory(value){category=value;displayLimit=6;document.querySelectorAll('[data-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===category)));render();}
   document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>setCategory(b.dataset.category)));
   search.addEventListener('input',()=>{displayLimit=6;render();});sort.addEventListener('change',render);
-  document.getElementById('show-more').addEventListener('click',()=>{displayLimit=products.length;render();});
+  document.getElementById('show-more').addEventListener('click',()=>{
+    const previousCount=grid.querySelectorAll('.product-card').length;
+    displayLimit=products.length;render();
+    grid.querySelectorAll('.product-card')[previousCount]?.querySelector('[data-detail]')?.focus();
+  });
   function showProduct(id){const p=products.find(p=>p.id===id);if(!p)return;document.getElementById('product-detail').innerHTML=`<div class="detail-layout"><div class="detail-art" style="--product-bg:${p.bg}">${artwork(p,'detail-'+p.id)}</div><div class="detail-content"><span class="concept-label">Collection concept</span><div class="detail-subtitle">${p.category} · ${p.size}</div><h2 class="serif" id="product-dialog-title">${p.name}</h2><p class="description">${p.description}</p><p class="description">Texture direction: ${p.texture}</p>${ingredientChips(p)}<button class="primary" type="button" data-add="${p.id}"><span>Add to bag</span><span>${money(p.price)} +</span></button><details open><summary>Ingredient story</summary><p>${p.ingredients}</p><div class="detail-ingredients">${p.notes.map(n=>`<div><strong>${n.name}</strong><p>${n.story}</p></div>`).join('')}</div></details><details><summary>Where it fits in your ritual</summary><p>${p.ritual}. Final application directions will be provided with the finished product.</p></details><details><summary>Product & delivery information</summary><p>Size: ${p.size}. This is a concept product with an illustrative price. Orders, delivery and returns are not available yet.</p></details><div id="detail-feedback" role="status" class="catalog-note"></div></div></div>`;dialog.showModal();}
   const ingredientSelect=document.getElementById('ingredient-product');
   let ingredientProduct=products[0];
@@ -81,19 +106,55 @@
   showIngredients(products[0].id);
   function saveBag(){try{localStorage.setItem('veila-concept-bag',JSON.stringify(bag));}catch{}const count=Object.values(bag).reduce((a,b)=>a+b,0);document.querySelector('.bag-count').textContent=count;document.querySelector('[data-bag]').setAttribute('aria-label',`Shopping bag, ${count} items`);}
   function renderBag(){const selected=products.filter(p=>bag[p.id]);document.getElementById('bag-items').innerHTML=selected.length?selected.map(p=>`<div class="bag-item"><div class="bag-item-art" style="--product-bg:${p.bg}">${artwork(p,'bag-'+p.id)}</div><div><h3 class="serif">${p.name}</h3><p>${p.size} · ${money(p.price)}</p><div class="quantity-controls"><button type="button" data-quantity="${p.id}" data-delta="-1" aria-label="Decrease ${p.name} quantity">−</button><span aria-label="Quantity">${bag[p.id]}</span><button type="button" data-quantity="${p.id}" data-delta="1" aria-label="Increase ${p.name} quantity" ${bag[p.id]>=20?'disabled':''}>+</button><button type="button" class="remove" data-remove="${p.id}" aria-label="Remove ${p.name}">Remove</button></div></div></div>`).join(''):'<div class="bag-empty"><p>Your next little ritual starts here.</p><p>Your bag is empty. Explore the collection to find your first essential.</p></div>';document.getElementById('bag-total').textContent=money(selected.reduce((sum,p)=>sum+p.price*bag[p.id],0));}
+  const bagStatus=document.createElement('p');
+  bagStatus.id='bag-feedback';bagStatus.className='catalog-note bag-feedback';
+  bagStatus.setAttribute('role','status');bagStatus.setAttribute('aria-live','polite');bagStatus.setAttribute('aria-atomic','true');
+  bagDialog.querySelector('.bag-total').after(bagStatus);
+  function announceBag(message){
+    const count=Object.values(bag).reduce((sum,quantity)=>sum+quantity,0);
+    const total=products.reduce((sum,p)=>sum+p.price*(bag[p.id]||0),0);
+    bagStatus.textContent=`${message} ${count} item${count===1?'':'s'} in your preview bag. Concept subtotal ${money(total)}.`;
+  }
+  function focusBagRow(index){
+    const rows=bagDialog.querySelectorAll('.bag-item');
+    const row=rows[Math.max(0,Math.min(index,rows.length-1))];
+    (row?.querySelector('[data-quantity]:not(:disabled)')||bagDialog.querySelector('[data-continue]')).focus({preventScroll:true});
+  }
+  function focusSection(id,preferred){
+    const section=document.getElementById(id);if(!section)return;
+    const target=preferred||section.querySelector('h1,h2')||section;
+    if(!target.matches('button,input,select,a[href],[tabindex]'))target.setAttribute('tabindex','-1');
+    target.focus({preventScroll:true});
+    section.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  }
   let toastTimer;function notify(message){const el=document.getElementById('preview-status');el.textContent=message;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);}
   document.addEventListener('click',event=>{
-    const ingredient=event.target.closest('[data-ingredients]');if(ingredient){showIngredients(ingredient.dataset.ingredients);document.getElementById('ingredients').scrollIntoView();ingredientSelect.focus({preventScroll:true});}
-    const categoryJump=event.target.closest('[data-shop-category]');if(categoryJump){search.value='';setCategory(categoryJump.dataset.shopCategory);document.getElementById('collection').scrollIntoView();}
+    const ingredient=event.target.closest('[data-ingredients]');if(ingredient){showIngredients(ingredient.dataset.ingredients);focusSection('ingredients',ingredientSelect);}
+    const categoryJump=event.target.closest('[data-shop-category]');if(categoryJump){search.value='';setCategory(categoryJump.dataset.shopCategory);focusSection('collection');}
     const detail=event.target.closest('[data-detail]');if(detail)showProduct(detail.dataset.detail);
     const add=event.target.closest('[data-add]');if(add){const p=products.find(p=>p.id===add.dataset.add);if(!p)return;const full=(bag[p.id]||0)>=20;if(!full)bag[p.id]=(bag[p.id]||0)+1;saveBag();const message=full?'Maximum of 20 per concept product.':p.name+' added to your bag.';if(dialog.open)document.getElementById('detail-feedback').textContent=message;else notify(message);}
-    if(event.target.closest('[data-bag]')){renderBag();bagDialog.showModal();}
-    const quantity=event.target.closest('[data-quantity]');if(quantity){const id=quantity.dataset.quantity;bag[id]=Math.max(0,Math.min(20,bag[id]+Number(quantity.dataset.delta)));if(!bag[id])delete bag[id];saveBag();renderBag();const next=bagDialog.querySelector(`[data-quantity="${id}"][data-delta="${quantity.dataset.delta}"]`);(next||bagDialog.querySelector('[data-close]')).focus();}
-    const remove=event.target.closest('[data-remove]');if(remove){delete bag[remove.dataset.remove];saveBag();renderBag();bagDialog.querySelector('[data-close]').focus();}
-    if(event.target.closest('[data-reset]')){search.value='';sort.value='featured';setCategory('All');}
+    if(event.target.closest('[data-bag]')){bagStatus.textContent='';renderBag();bagDialog.showModal();}
+    const quantity=event.target.closest('[data-quantity]');
+    if(quantity){
+      const id=quantity.dataset.quantity,p=products.find(p=>p.id===id);if(!p)return;
+      const index=[...bagDialog.querySelectorAll('.bag-item')].indexOf(quantity.closest('.bag-item'));
+      bag[id]=Math.max(0,Math.min(20,bag[id]+Number(quantity.dataset.delta)));
+      if(!bag[id])delete bag[id];saveBag();renderBag();
+      const next=bagDialog.querySelector(`[data-quantity="${id}"][data-delta="${quantity.dataset.delta}"]:not(:disabled)`)
+        ||bagDialog.querySelector(`[data-quantity="${id}"]:not(:disabled)`);
+      if(next)next.focus({preventScroll:true});else focusBagRow(index);
+      announceBag(bag[id]?`${p.name} quantity ${bag[id]}.${bag[id]===20?' Maximum quantity reached.':''}`:`${p.name} removed.`);
+    }
+    const remove=event.target.closest('[data-remove]');
+    if(remove){
+      const id=remove.dataset.remove,p=products.find(p=>p.id===id);if(!p)return;
+      const index=[...bagDialog.querySelectorAll('.bag-item')].indexOf(remove.closest('.bag-item'));
+      delete bag[id];saveBag();renderBag();focusBagRow(index);announceBag(`${p.name} removed.`);
+    }
+    if(event.target.closest('[data-reset]')){search.value='';sort.value='featured';setCategory('All');search.focus({preventScroll:true});}
     const close=event.target.closest('[data-close]');if(close)close.closest('dialog').close();
-    const jump=event.target.closest('[data-jump]');if(jump){document.getElementById(jump.dataset.jump).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const menu=document.getElementById('menu-toggle');menu.setAttribute('aria-expanded','false');menu.textContent='Menu +';document.getElementById('mobile-navigation').classList.remove('is-open');}
-    if(event.target.closest('[data-continue]')){bagDialog.close();document.getElementById('collection').scrollIntoView();}
+    const jump=event.target.closest('[data-jump]');if(jump){focusSection(jump.dataset.jump);const menu=document.getElementById('menu-toggle');menu.setAttribute('aria-expanded','false');menu.textContent='Menu +';document.getElementById('mobile-navigation').classList.remove('is-open');}
+    if(event.target.closest('[data-continue]')){bagDialog.close();focusSection('collection');}
   });
   [dialog,bagDialog].forEach(d=>d.addEventListener('click',event=>{if(event.target===d){const r=d.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)d.close();}}));
   saveBag();render();
