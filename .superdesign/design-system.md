@@ -27,3 +27,6 @@ Use the transparent photographic layers in assets/veila-parallax. The bottle sta
 
 ### Ingredient clarity and the opening ritual
 The hero opens its photographic dropper in response to pointer movement, with a photographic straight glass pipette, rounded dispensing tip and one slow serum drop at a time. No looping playback. Ingredient imagery stays delicate, with three labelled directions: aloe, oat and hyaluronic acid. The eight-entry ingredient library uses a warm limestone still life, expandable serif ingredient headings and useful plain-language notes with references. The Veila approach section earns credibility through clear ingredient, routine and concept information; do not add fabricated clinical claims, reviews, testing badges or certifications.
+
+### FAQ typography and voice
+The FAQ section pairs Lora 400 for the editorial heading with DM Sans 400/500 for questions and answers. Use readable 14px body text, generous line height, restrained numbering, and native expandable answers. Keep the language specific to Veila products and honest about the collection's development stage; avoid technical preview terminology and invented shipping promises.

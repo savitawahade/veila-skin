@@ -19,3 +19,24 @@
 @media(max-width:1050px){.library-layout{gap:5%}.library-entry summary .serif{font-size:27px}.library-entry summary{padding:18px 0}.care-clarity{gap:7%}.clarity-principles h3{font-size:30px}}
 @media(max-width:760px){.library-layout{grid-template-columns:1fr;gap:28px}.library-photo{position:relative;top:0;aspect-ratio:1/1;border-radius:130px 130px 3px 3px}.library-entry summary .serif{font-size:29px}.library-entry-body p{font-size:12px}.library-entry summary{min-height:67px}.library-footnote{display:block}.library-footnote details{margin-top:16px}.care-clarity{grid-template-columns:1fr;gap:32px}.clarity-principles h3{font-size:33px}.clarity-principles article{padding:25px 0}.clarity-heading>p:not(.section-kicker){max-width:100%}.library-photo figcaption{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.library-plus{transition:none}}
+
+/* Calm editorial typography and straightforward customer questions. */
+.details-section{font-family:'DM Sans',Arial,sans-serif;grid-template-columns:.85fr 1.35fr;gap:10%;padding-top:96px;padding-bottom:100px;background:#faf7f0;align-items:start}
+.details-section .section-kicker{font-family:'DM Sans',Arial,sans-serif;font-size:10px;letter-spacing:.16em;margin-bottom:22px;color:#6d7863}
+.details-section .section-heading{font-family:'Lora',Georgia,serif;font-size:clamp(36px,4.1vw,54px);font-weight:400;line-height:1.16;letter-spacing:-.04em}
+.details-section .section-heading em{font-family:inherit;color:#768268}
+.faq-intro{font-size:14px;line-height:1.85;max-width:285px;margin:23px 0;color:#65705b}
+.faq-collection-link{display:inline-flex;align-items:center;gap:28px;font-size:12px;min-height:44px;padding:10px 0;border-bottom:1px solid #a1ac94}
+.details-section .faq{border-top:1px solid #cbd0c0}
+.details-section .faq details,.details-section .faq details:first-child{padding:0;border-bottom:1px solid #cbd0c0}
+.details-section .faq summary{display:grid;grid-template-columns:24px 1fr 22px;align-items:start;gap:17px;padding:25px 0;font-size:18px;font-weight:500;line-height:1.45;letter-spacing:-.025em;color:#354333}
+.details-section .faq summary::-webkit-details-marker{display:none}
+.details-section .faq summary:after{font-family:'DM Sans',Arial,sans-serif;font-size:19px;font-weight:400;text-align:center;color:#758369;line-height:1.4}
+.faq-number{font-size:9px;font-weight:400;letter-spacing:.06em;line-height:2.9;color:#87907c}
+.faq-answer{padding:0 36px 26px 41px}
+.details-section .faq p{font-size:14px;line-height:1.9;max-width:510px;color:#63705b;margin:0;font-weight:400;letter-spacing:0}
+.faq-answer a{display:inline-flex;align-items:center;gap:20px;min-height:44px;margin-top:12px;border-bottom:1px solid #a1ac94;font-size:12px;color:#43563a}
+.details-section .faq details[open] summary{padding-bottom:15px}
+.details-section .faq summary:hover{color:#6d805e}
+@media(max-width:1050px){.details-section{gap:6%;grid-template-columns:.85fr 1.3fr}.details-section .faq summary{font-size:16px;gap:11px;grid-template-columns:20px 1fr 18px}.faq-answer{padding-left:31px;padding-right:18px}.details-section .section-heading{font-size:39px}}
+@media(max-width:760px){.details-section{grid-template-columns:1fr;gap:32px;padding:64px 24px}.details-section .section-heading{font-size:41px}.faq-intro{max-width:300px;font-size:14px;margin:20px 0 10px}.details-section .faq summary{font-size:17px;padding:22px 0;gap:10px}.details-section .faq p{font-size:14px;line-height:1.85}.faq-answer{padding:0 20px 24px 30px}.faq-collection-link{font-size:12px}}
