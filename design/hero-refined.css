@@ -42,7 +42,7 @@
 .product-rig>img,.dropper-assembly,.pipette-assembly,.serum-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .scene .product-rig img{object-fit:fill;width:100%;height:100%}
 .bottle-body{z-index:3}.dropper-assembly{z-index:4;will-change:transform}.dropper-assembly img{clip-path:inset(0 0 64.4% 0)}
-.pipette-assembly{z-index:2;will-change:transform}.glass-pipette{position:absolute;left:47.75%;top:34.8%;height:21%;width:4.5%;border-radius:0 0 45% 45%;border:1px solid #8d9e70bd;background:linear-gradient(90deg,#7180534d,#fffeee9c 30%,#f8ffe329 55%,#6b7a4166 90%);box-shadow:inset 1px 0 1px #fff9}
+.pipette-assembly{z-index:2;will-change:transform}
 .serum-particles{z-index:5}.falling-serum{position:absolute;left:50%;width:8px;height:13px;border-radius:55% 55% 48% 48%;border:1px solid #b9c29d99;background:radial-gradient(circle at 30% 25%,#ffffffed,#eef4d788 40%,#b6c99a99);box-shadow:1px 2px 4px #697b3d1a;opacity:0}
 .magic-aloe{bottom:11%}.aloe-note{bottom:6%}.magic-serum{top:43%;left:0}.serum-note{top:63%}.magic-oat{top:11%}.oat-note{top:56%}
 @media(max-width:1050px) and (min-width:761px){.magic-bottle{inset:0}.product-rig{height:71%;bottom:6%}.magic-serum{top:44%}.serum-note{top:63%}}
@@ -50,3 +50,12 @@
 @media(prefers-reduced-motion:reduce){.dropper-assembly,.pipette-assembly{will-change:auto;transform:none!important}.falling-serum{display:none}.product-rig{cursor:default}}
 /* Keep the product caption clear of the taller open dropper. */
 @media(min-width:761px){.scene-note{top:auto;bottom:25px}}
+
+/* Photographic glass: a straight tube and rounded dispensing end. */
+.scene .pipette-assembly img{clip-path:inset(35.5% 0 0);transform:scale(.65,.60);transform-origin:50% 35.5%}
+.bottle-body{will-change:transform}
+.product-rig{height:66%}
+@media(max-width:1050px) and (min-width:761px){.product-rig{height:66%}}
+@media(max-width:760px){.product-rig{height:68%}}
+.falling-serum{width:7px;height:11px;transform-origin:50% 0;border-radius:45% 45% 55% 55%;background:radial-gradient(circle at 28% 28%,#ffffffef,#f8fae66e 40%,#b9c3a888);border-color:#b1bca8a6}
+@media(prefers-reduced-motion:reduce){.bottle-body{transform:none!important;will-change:auto}}

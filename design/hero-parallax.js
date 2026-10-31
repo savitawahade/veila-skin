@@ -5,34 +5,50 @@
   const cap = rig.querySelector('.dropper-assembly');
   const pipette = rig.querySelector('.pipette-assembly');
   const particleHost = rig.querySelector('.serum-particles');
+  const body = rig.querySelector('.bottle-body');
+  const dropTiming = {form:1100, fall:1800, interval:3400};
+  const tip = () => .680-opening*.43;
+  const mouth = () => .278+opening*.06;
   const layers = [...scene.querySelectorAll('[data-depth]')].map(el => ({el, depth:Number(el.dataset.depth), turn:Number(el.dataset.turn || 0)}));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let x=0,y=0,tx=0,ty=0,opening=0,openTarget=0,frame=0,last=0,visible=true,lastDrop=0,wasOpen=false,keyboardOpen=false;
+  let x=0,y=0,tx=0,ty=0,opening=0,openTarget=0,frame=0,last=0,visible=true,lastDrop=-3400,wasOpen=false,keyboardOpen=false;
   const particles=[];
   function drop(time){
-    if(opening<.76 || particles.length>=5 || time-lastDrop<170 || reduced.matches)return;
+    if(opening<.95 || particles.length>=1 || time-lastDrop<dropTiming.interval || reduced.matches)return;
     lastDrop=time;
     const el=document.createElement('span');el.className='falling-serum';particleHost.append(el);
-    particles.push({el,start:time,from:.558-opening*.38,to:.278});
+    particles.push({el,start:time,from:null});
   }
   const paint = time => {
     frame=0;
     const dt=Math.min((time-(last||time-16))/1000,.05);last=time;
     const ease=1-Math.exp(-dt/.18);
-    x+=(tx-x)*ease;y+=(ty-y)*ease;opening+=(openTarget-opening)*(1-Math.exp(-dt/.22));
+    x+=(tx-x)*ease;y+=(ty-y)*ease;opening+=(openTarget-opening)*(1-Math.exp(-dt/.38));
     for(const {el,depth,turn} of layers) el.style.transform=`translate3d(${(x*depth).toFixed(3)}px,${(y*depth*.7).toFixed(3)}px,0) rotate(${(x*turn).toFixed(3)}deg)`;
-    const lift=`translate3d(0,${(-opening*38).toFixed(3)}%,0)`;
+    const lift=`translate3d(0,${(-opening*43).toFixed(3)}%,0)`;
     cap.style.transform=lift;pipette.style.transform=lift;
+    body.style.transform=`translate3d(0,${(opening*6).toFixed(3)}%,0)`;
     scene.dataset.motion=`${x.toFixed(3)},${y.toFixed(3)}`;scene.dataset.open=opening.toFixed(3);
-    if(opening>.9&&!wasOpen){drop(time);wasOpen=true;}
+    if(opening>.96&&!wasOpen){drop(time);wasOpen=true;}
     if(opening<.2)wasOpen=false;
     for(let i=particles.length-1;i>=0;i--){
-      const p=particles[i],age=(time-p.start)/760;
-      if(age>=1 || opening<.76){p.el.remove();particles.splice(i,1);continue;}
-      const fall=age*age;
-      p.el.style.top=`${(p.from+(p.to-p.from)*fall)*100}%`;
-      p.el.style.opacity=String(Math.min(age*9,1)*(1-Math.max(0,(age-.8)/.2)));
-      p.el.style.transform=`translateX(-50%) scale(${1-age*.3},${1+age*.4})`;
+      const p=particles[i],elapsed=time-p.start;
+      if(elapsed>=dropTiming.form+dropTiming.fall || opening<.85){p.el.remove();particles.splice(i,1);continue;}
+      if(elapsed<dropTiming.form){
+        const growth=elapsed/dropTiming.form;
+        p.el.style.top=`${tip()*100}%`;
+        p.el.style.opacity=String(Math.min(1,growth*4));
+        p.el.style.transform=`translateX(-50%) scale(${.25+growth*.75},${.2+growth*.8})`;
+        p.el.dataset.phase='forming';
+      } else {
+        if(p.from===null)p.from=tip();
+        const progress=(elapsed-dropTiming.form)/dropTiming.fall;
+        const fall=progress*progress;
+        p.el.style.top=`${(p.from+(mouth()-p.from)*fall)*100}%`;
+        p.el.style.opacity=String(1-Math.max(0,(progress-.9)/.1));
+        p.el.style.transform=`translateX(-50%) scale(${1-progress*.15},${1+progress*.2})`;
+        p.el.dataset.phase='falling';
+      }
     }
     scene.dataset.drops=String(particles.length);
     if(visible&&(Math.abs(tx-x)>.0005||Math.abs(ty-y)>.0005||Math.abs(openTarget-opening)>.0005||particles.length))frame=requestAnimationFrame(paint);
@@ -58,7 +74,7 @@
   });
   reduced.addEventListener('change',()=>{
     cancelAnimationFrame(frame);frame=0;x=y=tx=ty=opening=openTarget=0;keyboardOpen=wasOpen=false;
-    for(const {el} of layers)el.style.transform='';cap.style.transform=pipette.style.transform='';
+    for(const {el} of layers)el.style.transform='';cap.style.transform=pipette.style.transform=body.style.transform='';
     particles.splice(0).forEach(p=>p.el.remove());rig.setAttribute('aria-pressed','false');
   });
   new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(!visible){cancelAnimationFrame(frame);frame=0;}else wake();}).observe(hero);
