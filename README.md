@@ -31,7 +31,7 @@ The retail structure references [Sephora India's skincare collection](https://se
 ## Files
 
 - `design/veila-hero.html`: full page.
-- `design/water-button.js`: bounded cursor-origin ripples on Explore Veila, with touch, keyboard and reduced-motion support.
+- `design/water-button.js`: a photographic water droplet on Explore Veila, with smooth pointer movement, press feedback and reduced-motion support.
 - `design/hero-parallax.js`: lightweight pointer-following layers, easing, reduced-motion support and mobile navigation.
 - `design/assets/veila-parallax/`: transparent photographic bottle, open bottle, detached dropper, aloe, oat and serum layers, plus the ingredient editorial still life.
 - `design/veila-parallax-prompts.txt`: built-in image generation prompts for those layers.
