@@ -71,3 +71,17 @@
 .water-button:focus-visible{outline:2px solid #526c45;outline-offset:6px}
 @media(max-width:760px){.water-button-anchor{width:140px;height:88px}.water-button-label{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.water-button{transition:none;will-change:auto;transform:none!important;border-radius:64% 20% 62% 45% / 65% 18% 73% 42%!important}}
+
+/* Google Flow film replaces the separate bottle and botanical layers. */
+.film-hero{background:#f8f5ee}
+.film-hero .hero-film-scene{inset:104px 0 0;z-index:0;overflow:hidden;pointer-events:none;height:auto;mask-image:linear-gradient(to bottom,transparent,#000 8%);isolation:isolate}
+.film-hero .hero-film-scene:before{display:none}
+.film-hero .hero-film-scene img,.film-hero .hero-film-scene video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% center;transform:none}
+.film-hero .hero-film-scene video{opacity:0;transition:opacity .3s}
+.film-hero.film-ready .hero-film-scene video{opacity:1}
+.film-hero .shade{display:block;z-index:0;background:linear-gradient(90deg,#f8f5eef5 0%,#f8f5eed9 24%,#f8f5ee8c 40%,#f8f5ee00 59%);pointer-events:none}
+.film-controls{position:absolute;z-index:2;right:5%;bottom:25px;display:flex;align-items:center;gap:18px;color:#394834;font-size:9px}
+.film-hint{letter-spacing:.08em}.film-toggle{border:1px solid #53614855;border-radius:22px;padding:10px 16px;background:#fbf8edc9;color:inherit;font-size:10px;min-height:40px}
+.film-toggle:hover{background:#fbf8ed}.film-hero .copy{z-index:1}
+@media(max-width:760px){.film-hero{min-height:850px}.film-hero .hero-film-scene{inset:365px 0 0;mask-image:linear-gradient(to bottom,transparent,#000 7%)}.film-hero .hero-film-scene img,.film-hero .hero-film-scene video{object-position:76% center}.film-hero .shade{display:none}.film-controls{right:22px;bottom:16px}.film-hint{display:none}}
+@media(prefers-reduced-motion:reduce){.film-hint{display:none}.film-hero .hero-film-scene video{transition:none}}

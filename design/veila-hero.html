@@ -31,19 +31,10 @@
 <body>
 <a class="skip-link" href="#collection">Skip to collection</a>
 <main>
-<section class="hero" id="hero" aria-label="Veila Skin introduction">
-  <div class="scene" id="bottle-viewer" aria-label="Veila serum with floating aloe, oats and dewdrops">
-    <div class="magic-layer magic-shadow" data-depth="-9" aria-hidden="true"></div>
-    <div class="magic-layer magic-oat" data-depth="-30" data-turn="-5"><img src="assets/veila-parallax/oat.png" alt="Golden oat stem" width="1536" height="1024"></div>
-    <div class="magic-layer magic-bottle" data-depth="18" data-turn="2.5"><button type="button" class="product-rig" id="bottle-ritual" aria-label="Open the Veila bottle and release serum drops" aria-pressed="false"><span class="pipette-assembly" aria-hidden="true"><img src="assets/veila-parallax/photographic-dropper.png" alt="" width="1024" height="1536"></span><img class="bottle-body" src="assets/veila-parallax/bottle-open.png" alt="Veila Dewdrop Daily Serum, aloe and hyaluronic acid, 30 ml" width="1024" height="1536" fetchpriority="high"><span class="dropper-assembly" aria-hidden="true"><img src="assets/veila-parallax/photographic-dropper.png" alt="" width="1024" height="1536"></span><span class="serum-particles" aria-hidden="true"></span></button></div>
-    <div class="magic-layer magic-serum" data-depth="-34" data-turn="5"><img src="assets/veila-parallax/serum-drops.png" alt="Clear serum texture illustrating the hyaluronic acid ingredient story" width="1536" height="1024"></div>
-    <div class="magic-layer magic-aloe" data-depth="40" data-turn="-6"><img src="assets/veila-parallax/aloe.png" alt="Fresh aloe vera" width="1536" height="1024"></div>
-    <span class="magic-layer magic-dew dew-one" data-depth="48" aria-hidden="true"></span>
-    <span class="magic-layer magic-dew dew-two" data-depth="-36" aria-hidden="true"></span>
-    <span class="magic-layer magic-dew dew-three" data-depth="28" aria-hidden="true"></span>
-    <span class="magic-layer magic-note aloe-note" data-depth="24">01 / Aloe vera</span>
-    <span class="magic-layer magic-note oat-note" data-depth="-18">02 / Oat</span>
-    <span class="magic-layer magic-note serum-note" data-depth="-24">03 / Hyaluronic acid</span>
+<section class="hero film-hero" id="hero" aria-label="Veila Skin introduction">
+  <div class="scene hero-film-scene" id="bottle-viewer" aria-label="Veila Dewdrop serum film with aloe and oats">
+    <img class="film-poster" src="assets/veila-hero-v3/poster.jpg" alt="Veila Dewdrop Daily Serum on pale stone with aloe and oats" width="1280" height="720" fetchpriority="high">
+    <video id="hero-film" muted playsinline preload="auto" poster="assets/veila-hero-v3/poster.jpg" aria-label="Ten-second Veila serum ritual: a glass dropper opens and releases serum" tabindex="-1"><source src="assets/veila-hero-v3/veila-natural-ritual-10s.mp4" type="video/mp4"></video>
   </div>
   <div class="shade" aria-hidden="true"></div>
   <header class="nav" aria-label="Main navigation">
@@ -59,7 +50,7 @@
     <p class="intro">Aloe, oat and hyaluronic acid. Discover the ingredient story behind our signature Dewdrop Daily Serum.</p>
     <div class="cta-row"><span class="water-button-anchor"><button class="primary water-button" type="button" data-jump="collection"><span class="water-button-label">Explore Veila <span aria-hidden="true">↗</span></span></button></span><button class="text-link" type="button" data-jump="philosophy">Our philosophy</button></div>
   </section>
-  <div class="scene-note">DEWDROP DAILY SERUM · 30 ML</div>
+  <div class="film-controls"><span class="film-hint">Move your mouse to explore</span><button type="button" class="film-toggle" id="film-toggle" aria-pressed="false">Play the ritual</button></div>
 
 </section>
 <div class="editorial-strip"><span>VEILA / THE EVERYDAY COLLECTION</span><p class="serif">A softer kind of <em>everyday.</em></p><a href="#ingredients">Get to know what’s inside ↗</a></div>
@@ -101,7 +92,7 @@
 <div class="toast" id="preview-status" role="status" aria-live="polite"></div>
 <dialog class="shop-dialog" id="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Close product details" autofocus>×</button><div id="product-detail"></div></dialog>
 <dialog class="shop-dialog bag-dialog" id="bag-dialog" aria-labelledby="bag-title"><button type="button" class="dialog-close" data-close aria-label="Close shopping bag" autofocus>×</button><div class="bag-content"><p class="section-kicker">A moment of your own</p><h2 class="serif" id="bag-title">Your ritual bag.</h2><p class="bag-intro">Your collection, coming together. This preview bag is saved only in this browser.</p><div id="bag-items"></div><div class="bag-total"><span>Concept subtotal</span><strong id="bag-total">₹0</strong></div><p class="bag-intro">Shopping preview · Checkout isn't open yet. No orders or payments are taken.</p><button class="primary" type="button" data-continue>Continue exploring ↗</button></div></dialog>
-<script src="hero-parallax.js"></script>
+<script src="hero-film.js"></script>
 <script src="water-button.js"></script>
 <script src="storefront.js"></script>
 </body>

@@ -16,7 +16,7 @@ Visit http://127.0.0.1:4173/. No build or package installation is required. Goog
 
 ## Design and functionality
 
-- Full-viewport photographic hero. Mouse movement gently moves the bottle, aloe, oats and dewdrops at different depths, with small tilts and smooth settling. The bottle remains front-facing and legible. Moving the pointer over the hero lifts the photographic cap and reveals a glass pipette; further movement releases one slow serum droplet at a time into the neck (1.1 seconds forming, 1.8 seconds falling, at least 3.4 seconds between starts). Leaving the hero closes the bottle. The bottle button supports tap/keyboard opening, with Escape to close. Touch movement also responds without blocking page scrolling. Reduced-motion preferences disable the effect. No autoplay, 360° spin, slider, frame counter or bottom control strip.
+- Full-viewport Google Flow video hero using the new 10-second Natural Serum Ritual film. Mouse movement scrubs the opening sequence with eased seeking; leaving the hero returns to the opening shot. The film is encoded with every frame independently seekable. A Play the ritual / Pause film button supports touch and keyboard, and playback pauses offscreen or when the tab is hidden. No autoplay. Reduced-motion preferences disable pointer scrubbing. The transparent, morphing water-drop CTA remains in place.
 - Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Fifteen coordinated AI-generated product photographs show the product type and proposed ingredient highlights directly on the packaging.
 - Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
 - An eight-entry ingredient library with editorial photography, expandable explanations, source links and links into the corresponding product explorer. A dedicated Veila approach section explains ingredient transparency, routine information and concept status.
@@ -32,15 +32,17 @@ The retail structure references [Sephora India's skincare collection](https://se
 
 - `design/veila-hero.html`: full page.
 - `design/water-button.js`: smooth movement of the entire droplet-shaped Explore Veila button, with gentle tilt, liquid stretch, press feedback and reduced-motion support.
-- `design/hero-parallax.js`: lightweight pointer-following layers, easing, reduced-motion support and mobile navigation.
+- `design/hero-film.js`: mouse-controlled film, explicit play/pause, reduced-motion handling and mobile navigation.
+- `design/hero-parallax.js`: archived photographic layer interaction.
 - `design/assets/veila-parallax/`: transparent photographic bottle, open bottle, detached dropper, aloe, oat and serum layers, plus the ingredient editorial still life.
 - `design/veila-parallax-prompts.txt`: built-in image generation prompts for those layers.
-- `design/hero-refined.css`: refined dropper hero composition.
+- `design/hero-refined.css`: responsive film composition and transparent morphing CTA.
 - `design/storefront.css`: base collection, editorial sections and dialogs.
 - `design/veila-refined.css`: photographic collection, ingredient atelier and refined responsive styling.
 - `design/assets/veila-products/`: fifteen labelled product photographs and their original photographic references, optimized as JPEGs.
 - `design/veila-art-direction.md`: image direction, catalog scope and source references.
 - `design/storefront.js`: concept catalog, ingredient explorer, filters and browser-local bag.
+- `design/assets/veila-hero-v3/`: new Google Flow source, seek-friendly 10-second MP4 and poster. Generated with Omni 1.1 Flash, 720p, one output at the approved 15-credit cost. The film has AI-generated small-print imperfections and is concept imagery.
 - `design/assets/veila-hero-v2/`: refined bottle reference and approved 10-second MP4, retained separately from the interactive hero. Locally extracted frames are ignored.
 - `design/assets/veila-frames/`: archived first-version frames.
 - `design/assets/veila-bottle-opening-8s.mp4`: approved source clip; never played by the website.
@@ -55,4 +57,4 @@ Open this repository folder in Antigravity. Edit the same source files, preview 
 
 ## Verification
 
-Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, cap opening and closing, bounded droplets, ingredient library links, desktop/mobile layout, removed controls and browser errors. The separate MP4 was verified as exactly 10 seconds.
+Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, cap opening and closing, bounded droplets, ingredient library links, desktop/mobile layout, removed controls and browser errors. The active Flow MP4 was verified as exactly 10 seconds at 1280×720, with mouse seeking, explicit playback and responsive framing.
