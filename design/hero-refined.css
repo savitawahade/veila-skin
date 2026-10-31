@@ -59,13 +59,14 @@
 @media(max-width:760px){.product-rig{height:68%}}
 .falling-serum{width:7px;height:11px;transform-origin:50% 0;border-radius:45% 45% 55% 55%;background:radial-gradient(circle at 28% 28%,#ffffffef,#f8fae66e 40%,#b9c3a888);border-color:#b1bca8a6}
 @media(prefers-reduced-motion:reduce){.bottle-body{transform:none!important;will-change:auto}}
-/* A visible glassy droplet, with a soft fluid-shaped button edge. */
-.water-button{position:relative;isolation:isolate;overflow:hidden;min-height:58px;padding:18px 23px;gap:22px;border-radius:34px 30px 32px 12px;background:linear-gradient(135deg,#63745a,#44563d 48%,#364a32);border:1px solid #8e9e7c;box-shadow:inset 0 1px 1px #e8f0d65c,inset 0 -2px 4px #19291345,0 3px 8px #35462c12;transition:background .25s,box-shadow .25s}
-.water-button-label{position:relative;z-index:3;pointer-events:none;text-shadow:0 1px 2px #21321d55}
-.water-button-space{width:31px;flex:none;pointer-events:none}
-.water-surface{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;border-radius:inherit}
-.button-water-drop{position:absolute;width:58px;height:42px;object-fit:contain;right:5px;top:50%;transform:translateY(-50%);filter:drop-shadow(2px 3px 2px #182b1955);will-change:transform;user-select:none;-webkit-user-drag:none}
-.water-button:before{content:'';position:absolute;inset:2px 8px 50% 7px;border-radius:35px 30px 55% 45%;background:linear-gradient(180deg,#ecf7dd21,#ecf7dd00);pointer-events:none;z-index:0}
-.water-button:hover{background:linear-gradient(135deg,#6d8060,#4d6343 48%,#3b5235);box-shadow:inset 0 1px 2px #effbd69c,inset 0 -2px 4px #19291345,0 4px 12px #35462c20}
-@media(max-width:760px){.water-button{min-height:50px;padding:13px 18px;gap:15px}.button-water-drop{width:51px;height:37px;right:4px}.water-button-space{width:27px}}
-@media(prefers-reduced-motion:reduce){.water-button{transition:none}.button-water-drop{will-change:auto;transform:translateY(-50%)!important}}
+/* The entire CTA is a clear, softly refracting water droplet. */
+.water-button-anchor{position:relative;display:block;flex:none;width:164px;height:104px;pointer-events:auto}
+.water-button{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:12px 17px 6px 9px;gap:0;overflow:hidden;border-radius:64% 7% 62% 45% / 65% 9% 73% 42%;border:1px solid #9aa9928c;color:#34452f;background:radial-gradient(ellipse at 24% 21%,#fffef9e8 0%,#ffffff00 34%),radial-gradient(ellipse at 72% 82%,#ffffffd9 0%,#e8efdf42 27%,#ffffff00 54%),linear-gradient(145deg,#e3e9dc99 18%,#c2cfb38c 51%,#f9fbf099 74%,#b6c3aa99);box-shadow:inset 3px 3px 4px #ffffffeb,inset -3px -5px 6px #768a6266,inset 7px 10px 14px #ffffff55,2px 9px 10px -5px #4c62434d;will-change:transform;transform-origin:50% 60%;transition:box-shadow .25s;cursor:pointer}
+.water-button-label{position:relative;z-index:3;pointer-events:none;white-space:nowrap;font-size:11px;font-weight:600;letter-spacing:.01em;text-shadow:0 1px 1px #ffffffb3;transform:translateY(4px)}
+.water-button-label span{display:inline-block;margin-left:5px}
+.water-button:before{content:'';position:absolute;left:14%;top:13%;width:44%;height:17%;border-radius:50%;transform:rotate(-24deg);background:linear-gradient(180deg,#ffffffed,#ffffff16);filter:blur(.6px);pointer-events:none}
+.water-button:after{content:'';position:absolute;right:14%;bottom:12%;width:38%;height:12%;border-radius:50%;transform:rotate(-32deg);background:linear-gradient(180deg,#ffffff00,#fffffff0);filter:blur(.7px);pointer-events:none}
+.water-button:hover{background:radial-gradient(ellipse at 24% 21%,#fffef9f5 0%,#ffffff00 34%),radial-gradient(ellipse at 72% 82%,#fffffff0 0%,#e8efdf42 27%,#ffffff00 54%),linear-gradient(145deg,#e3e9dc99 18%,#c2cfb38c 51%,#f9fbf099 74%,#b6c3aa99);box-shadow:inset 3px 3px 5px #fff,inset -3px -5px 7px #768a6277,inset 7px 10px 14px #ffffff55,3px 12px 13px -5px #4c62433d}
+.water-button:focus-visible{outline:2px solid #526c45;outline-offset:6px}
+@media(max-width:760px){.water-button-anchor{width:140px;height:88px}.water-button-label{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.water-button{transition:none;will-change:auto;transform:none!important}}
