@@ -19,6 +19,9 @@
     const desiredStretch=Math.min(Math.hypot(vx,vy)*.0003,.009);
     stretch+=(desiredStretch-stretch)*(1-Math.exp(-dt/.22));
     button.style.transform=`translate3d(${x.toFixed(3)}px,${y.toFixed(3)}px,0) rotate(${(x*.14).toFixed(3)}deg) scale(${(scale+stretch).toFixed(4)},${(scale-stretch).toFixed(4)})`;
+    // Morph the actual silhouette, not just the scale of a fixed shape.
+    const nx=x/11,ny=y/8;
+    button.style.borderRadius=`${64+12*nx}% ${20-13*nx+7*ny}% ${62-14*ny}% ${45+12*ny}% / ${65-14*ny}% ${18+10*nx-7*ny}% ${73-15*nx}% ${42+12*nx}%`;
     if(Math.abs(tx-x)>.005||Math.abs(ty-y)>.005||Math.hypot(vx,vy)>.02||Math.abs(targetScale-scale)>.0005||Math.abs(vs)>.001||stretch>.0001)frame=requestAnimationFrame(paint);
   }
   function wake(){if(!reduced.matches&&!frame){last=0;frame=requestAnimationFrame(paint);}}
@@ -39,5 +42,5 @@
   button.addEventListener('pointercancel',reset);
   button.addEventListener('blur',reset);
   window.addEventListener('blur',reset);
-  reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;x=y=tx=ty=0;scale=targetScale=1;vx=vy=vs=stretch=0;button.style.transform='';});
+  reduced.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;x=y=tx=ty=0;scale=targetScale=1;vx=vy=vs=stretch=0;button.style.transform='';button.style.borderRadius='';});
 })();

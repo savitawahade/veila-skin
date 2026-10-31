@@ -61,12 +61,13 @@
 @media(prefers-reduced-motion:reduce){.bottle-body{transform:none!important;will-change:auto}}
 /* The entire CTA is a clear, softly refracting water droplet. */
 .water-button-anchor{position:relative;display:block;flex:none;width:164px;height:104px;pointer-events:auto}
-.water-button{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:12px 17px 6px 9px;gap:0;overflow:hidden;border-radius:64% 7% 62% 45% / 65% 9% 73% 42%;border:1px solid #8c999447;color:#34452f;--water-fill:radial-gradient(ellipse at 25% 17%,#ffffff45 0%,#ffffff00 32%),radial-gradient(ellipse at 76% 85%,#ffffff38 0%,#ffffff00 35%),linear-gradient(145deg,#ffffff08 20%,#d8e5dd05 55%,#ffffff12 80%);background:var(--water-fill);box-shadow:inset 1px 2px 2px #ffffffd9,inset -1px -2px 3px #596f633d,inset 0 -7px 8px -7px #ffffffd9,1px 5px 7px -5px #3b514e47;backdrop-filter:brightness(1.025) saturate(.97);-webkit-backdrop-filter:brightness(1.025) saturate(.97);will-change:transform;transform-origin:50% 60%;transition:box-shadow .25s;cursor:pointer}
-.water-button-label{position:relative;z-index:3;pointer-events:none;white-space:nowrap;font-size:11px;font-weight:600;letter-spacing:.01em;text-shadow:0 1px 1px #ffffffb3;transform:translateY(4px)}
+.water-button{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:0;padding:12px 17px 6px 9px;gap:0;overflow:hidden;border-radius:64% 20% 62% 45% / 65% 18% 73% 42%;border:1px solid #61746b55;color:#34452f;background:none;box-shadow:inset 0 1px 0 #ffffff80,inset -1px -1px 1px #40584d26,0 3px 3px -3px #40584d40;backdrop-filter:none;-webkit-backdrop-filter:none;will-change:transform,border-radius;transform-origin:50% 60%;cursor:pointer}
+.water-button-label{position:relative;z-index:3;pointer-events:none;white-space:nowrap;font-size:11px;font-weight:600;letter-spacing:.01em;text-shadow:none;transform:translateY(4px)}
 .water-button-label span{display:inline-block;margin-left:5px}
-.water-button:before{content:'';position:absolute;left:14%;top:13%;width:34%;height:8%;border-radius:50%;transform:rotate(-24deg);background:linear-gradient(180deg,#ffffffe0,#ffffff00);filter:blur(.6px);pointer-events:none}
-.water-button:after{content:'';position:absolute;right:14%;bottom:12%;width:32%;height:6%;border-radius:50%;transform:rotate(-32deg);background:linear-gradient(180deg,#ffffff00,#ffffffb3);filter:blur(.7px);pointer-events:none}
-.water-button:hover{background:var(--water-fill);box-shadow:inset 1px 2px 2px #fffffff0,inset -1px -2px 3px #596f6347,inset 0 -7px 8px -7px #ffffffeb,1px 6px 9px -5px #3b514e3d}
+.water-button:before,.water-button:after{content:'';position:absolute;inset:2px;border-radius:inherit;background:none;pointer-events:none}
+.water-button:before{border-top:1px solid #ffffff70;border-left:1px solid #ffffff20;clip-path:polygon(0 0,70% 0,43% 35%,0 43%)}
+.water-button:after{border-bottom:1px solid #ffffff65;clip-path:polygon(50% 70%,100% 45%,100% 100%,35% 100%)}
+.water-button:hover{background:none;box-shadow:inset 0 1px 0 #ffffff80,inset -1px -1px 1px #40584d26,0 3px 3px -3px #40584d40}
 .water-button:focus-visible{outline:2px solid #526c45;outline-offset:6px}
 @media(max-width:760px){.water-button-anchor{width:140px;height:88px}.water-button-label{font-size:10px}}
-@media(prefers-reduced-motion:reduce){.water-button{transition:none;will-change:auto;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.water-button{transition:none;will-change:auto;transform:none!important;border-radius:64% 20% 62% 45% / 65% 18% 73% 42%!important}}
