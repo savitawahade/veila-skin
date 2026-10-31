@@ -40,3 +40,131 @@
 .details-section .faq summary:hover{color:#6d805e}
 @media(max-width:1050px){.details-section{gap:6%;grid-template-columns:.85fr 1.3fr}.details-section .faq summary{font-size:16px;gap:11px;grid-template-columns:20px 1fr 18px}.faq-answer{padding-left:31px;padding-right:18px}.details-section .section-heading{font-size:39px}}
 @media(max-width:760px){.details-section{grid-template-columns:1fr;gap:32px;padding:64px 24px}.details-section .section-heading{font-size:41px}.faq-intro{max-width:300px;font-size:14px;margin:20px 0 10px}.details-section .faq summary{font-size:17px;padding:22px 0;gap:10px}.details-section .faq p{font-size:14px;line-height:1.85}.faq-answer{padding:0 20px 24px 30px}.faq-collection-link{font-size:12px}}
+
+/* Readable product information and comfortable controls across the storefront. */
+:root{--muted:#596550;--sage:#637451}
+.section-kicker,.details-section .section-kicker{font-size:12px;letter-spacing:.14em;color:#536448}
+.section-top p,.product-description,.ingredient-copy>p:not(.section-kicker):not(.catalog-note),.ritual-copy>p,.philosophy>p:last-child,.clarity-heading>p:not(.section-kicker),.clarity-principles p,.library-entry-body p{font-size:16px;line-height:1.75;color:#4f5f45}
+.section-top p{max-width:380px}
+.editorial-strip>span,.editorial-strip a{font-size:12px;line-height:1.6}
+.editorial-strip a{display:inline-flex;align-items:center;min-height:44px}
+.category-tabs button{min-height:44px;font-size:14px;padding:11px 16px}
+.shop-tools{font-size:14px;gap:16px}
+.search-wrap input,.sort-wrap select,.ingredient-selector select{font-size:16px;min-height:44px}
+.search-wrap{max-width:360px}
+.sort-wrap{font-size:14px;flex-wrap:wrap}
+.product-count{font-size:12px;color:#526249}
+.product-grid{align-items:start;gap:48px 28px}
+.product-visual{height:auto;aspect-ratio:1/1.04}
+.product-visual:after{font-size:14px}
+.product-tag{font-size:12px;line-height:1.5;letter-spacing:.035em;padding:8px 12px;background:#fcf9eff2;max-width:calc(100% - 24px)}
+.product-meta{font-size:12px;line-height:1.5;gap:12px;margin-top:20px;color:#536448}
+.product-title{font-size:32px;line-height:1.15;min-height:0;margin:10px 0 12px}
+.product-title button{min-height:44px}
+.product-description{min-height:0;margin-bottom:16px}
+.ingredient-chips{min-height:0;gap:8px;margin-bottom:8px}
+.ingredient-chips span{font-size:12px;line-height:1.5;padding:6px 10px;color:#455b3b;background:#e8eddf}
+.ingredient-story-link{font-size:14px;line-height:1.5;min-height:44px;padding:10px 0 14px;color:#455b3b}
+.product-buy>span{font-size:16px}
+.add-button{font-size:14px;min-height:44px;padding:10px 0 10px 12px}
+.collection-more button,.outline-button{font-size:14px;min-height:44px}
+.catalog-note,.ingredient-copy .catalog-note,.library-footnote>p,.library-footnote details{font-size:12px;line-height:1.75;color:#526249}
+.library-footnote summary{min-height:44px}
+.library-footnote a{display:inline-block;padding:8px 0}
+.ingredient-selector{font-size:12px;letter-spacing:.08em;color:#536448}
+.ingredient-selector select{max-width:100%}
+.ingredient-notes .note-number,.library-number{font-size:12px;color:#536448}
+.ingredient-notes button{min-height:56px}
+.photo-caption,.library-photo figcaption{font-size:12px;line-height:1.5;letter-spacing:.06em;background:#faf6edf2;color:#455b3b}
+.library-role{font-size:12px;letter-spacing:.1em;color:#536448}
+.library-entry-body button,.clarity-link,.clarity-principles a{font-size:14px;min-height:44px;line-height:1.5}
+.clarity-principles article>span{font-size:12px;color:#536448}
+.step-number,.step-detail{font-size:12px;line-height:1.6;color:#526249}
+.step-link{min-width:44px;min-height:44px}
+.ritual-picture>span:not(.product-set){font-size:12px;line-height:1.5;letter-spacing:.06em;background:#faf6edf2;color:#455b3b}
+.footer-tagline,.footer-links{font-size:14px;line-height:1.7}
+.footer-links a,.footer-shop button,.footer-bottom a{display:inline-flex;align-items:center;min-height:44px}
+.footer-shop button{font-size:14px;line-height:1.5;padding:10px 0}
+.footer-bottom{font-size:12px;line-height:1.75;color:#d5decf}
+.footer-tagline{color:#d5decf}
+.detail-content .description,.detail-content details,.detail-ingredients p,.bag-intro,.bag-item p,.bag-empty{font-size:16px;line-height:1.75;color:#4f5f45}
+.detail-content .primary,.bag-content .primary{font-size:14px;min-height:44px}
+.detail-content summary{min-height:44px;display:flex;align-items:center;line-height:1.6}
+.detail-subtitle,.concept-label{font-size:12px;line-height:1.6;color:#526249}
+.dialog-close{width:44px;height:44px}
+.quantity-controls{gap:10px;flex-wrap:wrap;font-size:14px}
+.quantity-controls button{min-width:44px;height:44px;font-size:16px}
+.quantity-controls .remove{font-size:14px;padding:10px 0;min-width:44px}
+.bag-item{grid-template-columns:86px minmax(0,1fr);gap:16px}
+.bag-item-art{height:100px}
+.faq-number{font-size:12px;color:#526249;line-height:2.2}
+.details-section .faq p,.faq-intro{font-size:16px;line-height:1.75;color:#4f5f45}
+.faq-answer a,.faq-collection-link{font-size:14px;min-height:44px}
+
+/* The same three real product photographs represent the set in every context. */
+.product-set,:is(.product-visual,.ingredient-picture,.detail-art,.bag-item-art,.ritual-picture)>.product-set{position:relative;inset:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:4px;width:100%;height:100%;padding:0;margin:0;background:#e9e3d6;overflow:hidden;border-radius:0;font-size:inherit;letter-spacing:normal}
+.product-set>img,:is(.product-visual,.ingredient-picture,.detail-art,.bag-item-art,.ritual-picture) .product-set>img{position:relative;inset:auto;display:block;width:100%;height:100%;min-width:0;max-height:100%;object-fit:contain;object-position:center;transform:none;transition:none;padding:0}
+.detail-art>.product-set{min-height:480px}
+.bag-item-art>.product-set{gap:1px}
+.ritual-picture>.product-set{padding:20px 0 50px}
+
+@media(max-width:1050px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-title{font-size:30px}.section-top{align-items:start}.section-top p{max-width:330px}.shop-tools{flex-wrap:wrap}.sort-wrap{margin-left:auto}}
+@media(max-width:760px){
+ .section{padding:60px 24px}
+ .section-top p{max-width:none}
+ .product-grid{gap:36px 20px}
+ .product-visual{height:auto;aspect-ratio:1/1.04;border-radius:80px 80px 3px 3px}
+ .product-title{font-size:30px;min-height:0}
+ .product-description{font-size:16px;min-height:0}
+ .product-tag{font-size:12px;left:10px;right:10px;bottom:12px;padding:7px 10px}
+ .product-meta{font-size:12px;gap:8px}
+ .ingredient-chips{min-height:0}
+ .ingredient-chips span{font-size:12px}
+ .ingredient-story-link{font-size:14px}
+ .product-buy>span{font-size:16px}
+ .add-button{font-size:14px}
+ .category-tabs{gap:8px;padding-bottom:12px}
+ .category-tabs button{font-size:14px;min-height:44px}
+ .sort-wrap{font-size:14px;max-width:100%}
+ .sort-wrap select{max-width:180px}
+ .search-wrap{max-width:none}
+ .editorial-strip>span,.editorial-strip a{font-size:12px}
+ .ingredient-copy>p:not(.section-kicker):not(.catalog-note),.library-entry-body p{font-size:16px}
+ .ingredient-copy .catalog-note,.photo-caption,.library-photo figcaption{font-size:12px}
+ .ingredient-notes .serif{font-size:28px}
+ .library-entry-body{padding-left:0}
+ .photo-caption{left:16px;right:16px;bottom:16px}
+ .detail-content{padding:28px 24px}
+ .detail-art>.product-set{min-height:270px}
+ .footer-shop{gap:12px 24px}
+ .footer-shop button{font-size:14px}
+ .footer-links{gap:12px 24px}
+ .details-section .faq p,.faq-intro{font-size:16px}
+ .faq-answer{padding:0 0 24px 0}
+ .faq-collection-link{font-size:14px}
+}
+@media(max-width:480px){
+ .product-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+ .product-visual{aspect-ratio:1;border-radius:110px 110px 3px 3px}
+ .product-title{font-size:34px}
+ .ingredient-chips{gap:8px}
+ .product-tag{bottom:16px}
+ .shop-tools{gap:12px}
+ .sort-wrap{margin-left:0;flex:1 1 100%}
+ .sort-wrap select{flex:1;max-width:none;min-width:0}
+ .bag-item{grid-template-columns:70px minmax(0,1fr);gap:12px}
+ .bag-item-art{height:90px}
+ .quantity-controls{gap:8px}
+ .quantity-controls .remove{margin-left:0}
+ .ritual-steps li{grid-template-columns:24px minmax(0,1fr) 44px;gap:10px}
+ .ritual-picture{aspect-ratio:1.1;border-radius:4px 4px 80px 4px}
+ .ritual-picture>.product-set{padding:10px 0 50px}
+}
+
+/* Give the exact-photo triptych a horizontal frame instead of an empty tall arch. */
+.product-visual:has(>.product-set){aspect-ratio:1.8/1;border-radius:24px 24px 3px 3px}
+.ritual-picture:has(>.product-set){aspect-ratio:1.8/1;border-radius:4px 4px 40px 4px}
+.detail-art:has(>.product-set){min-height:0;height:auto;aspect-ratio:1.8/1;align-self:center}
+.detail-art>.product-set{min-height:0}
+.ingredient-picture:has(>.product-set){aspect-ratio:1.8/1;border-radius:24px 24px 3px 3px}
+.ingredient-picture>.product-set{padding:12px 0 48px}

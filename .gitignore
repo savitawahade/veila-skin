@@ -17,3 +17,6 @@ design/assets/veila-storefront-*.jpg
 
 # Local intermediate frames; the approved film is retained.
 design/assets/veila-hero-v2/frames/
+
+# Local review stills for the fourth hero film.
+design/assets/veila-hero-v4/review-*.jpg

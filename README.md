@@ -2,11 +2,11 @@
 
 Your daily moment of care.
 
-A responsive skincare storefront concept in the existing private repository [savitawahade/veila-skin](https://github.com/savitawahade/veila-skin).
+A responsive skincare brand and storefront concept in the private repository [savitawahade/veila-skin](https://github.com/savitawahade/veila-skin).
 
-## Preview
+## Local preview
 
-Open `index.html` directly in Chrome, or run from this repository:
+Open `index.html` in Chrome, or run from the repository:
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
@@ -14,47 +14,49 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 Visit http://127.0.0.1:4173/. No build or package installation is required. Google Fonts needs internet access; system font fallbacks are provided.
 
-## Design and functionality
+## Current experience
 
-- Full-viewport Google Flow video hero using the new 10-second Natural Serum Ritual film. Mouse movement scrubs the opening sequence with eased seeking; leaving the hero returns to the opening shot. The film is encoded with every frame independently seekable. A Play the ritual / Pause film button supports touch and keyboard, and playback pauses offscreen or when the tab is hidden. No autoplay. Reduced-motion preferences disable pointer scrubbing. The transparent, morphing water-drop CTA remains in place.
-- Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Fifteen coordinated AI-generated product photographs show the product type and proposed ingredient highlights directly on the packaging.
-- Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
-- An eight-entry ingredient library with editorial photography, expandable explanations, source links and links into the corresponding product explorer. A dedicated Veila approach section explains ingredient transparency, routine information and concept status.
-- Visible ingredient chips on every card and an interactive ingredient atelier with a product selector and individual ingredient notes.
-- Sunscreen remains a development concept: no tested SPF, UVA rating or performance claim is asserted.
-- Accessible native product dialogs with ingredient, ritual and delivery information.
-- Preview shopping bag with quantity adjustment, removal, calculated subtotal and local browser persistence. No checkout, payments, orders or customer data collection.
-- Ritual, philosophy, FAQ and footer sections; working navigation and mobile menu.
+- The hero displays a product poster first. The video is requested only after **Play the ritual** is activated. It supports pause, resume, replay, loading feedback and retry after a failure. Playback pauses when the hero leaves view or the browser tab is hidden. There is no autoplay or mouse-controlled video seeking.
+- Fine-pointer movement adds a small, eased shift to the product composition. The transparent water-drop CTA changes its outline gently within its fixed location. Reduced-motion preferences disable both effects; explicit film playback remains available.
+- On narrow screens, navigation, copy, the product film and its controls follow normal page flow. Small phones trim empty space beside the bottle while preserving the full image height, bottle and raised dropper. The product grid has one column on small phones, two at intermediate widths and three on wide screens. Product text is 16px, secondary information is at least 12px, and interactive controls have comfortable touch targets.
+- Fifteen Veila concepts cover cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and ritual sets. Category filters, search, sorting, progressive collection loading and product dialogs support browsing.
+- The Dewdrop serum uses a consistent packaging master across hero and catalog imagery. The Daily Ritual Set displays the same cleanser, serum and moisturiser photographs used by their individual products. The gel moisturiser image matches its named product.
+- The ingredient library, product ingredient explorer, ritual, philosophy and FAQ explain the collection. The preview bag supports quantities, removal and subtotal calculation; it is stored only in the visitor's browser.
 
-The retail structure references [Sephora India's skincare collection](https://sephora.in/collection/skincare), with category coverage informed by [Hyphen's full collection](https://letshyphen.com/collections/all). Veila branding, product names, descriptions and packaging illustrations are original concept content. Formulas, pricing, availability, suitability, delivery and returns need confirmation before launch. No customer ratings, certifications or tested efficacy are asserted. Brand/domain availability has not been verified.
+## Concept status
 
-## Files
+Veila is in development. Names, formulas, packaging, ingredients and INR prices are illustrative. Final formulas, suitability, availability, delivery and returns need confirmation before launch. No orders or payments are accepted. No customer reviews, certifications, tested SPF/UVA protection or clinical efficacy claims are fabricated. Brand and domain availability have not been verified.
 
-- `design/veila-hero.html`: full page.
-- `design/water-button.js`: smooth movement of the entire droplet-shaped Explore Veila button, with gentle tilt, liquid stretch, press feedback and reduced-motion support.
-- `design/hero-film.js`: mouse-controlled film, explicit play/pause, reduced-motion handling and mobile navigation.
-- `design/hero-parallax.js`: archived photographic layer interaction.
-- `design/assets/veila-parallax/`: transparent photographic bottle, open bottle, detached dropper, aloe, oat and serum layers, plus the ingredient editorial still life.
-- `design/veila-parallax-prompts.txt`: built-in image generation prompts for those layers.
-- `design/hero-refined.css`: responsive film composition and transparent morphing CTA.
-- `design/storefront.css`: base collection, editorial sections and dialogs.
-- `design/veila-refined.css`: photographic collection, ingredient atelier and refined responsive styling.
-- `design/assets/veila-products/`: fifteen labelled product photographs and their original photographic references, optimized as JPEGs.
-- `design/veila-art-direction.md`: image direction, catalog scope and source references.
-- `design/storefront.js`: concept catalog, ingredient explorer, filters and browser-local bag.
-- `design/assets/veila-hero-v3/`: new Google Flow source, seek-friendly 10-second MP4 and poster. Generated with Omni 1.1 Flash, 720p, one output at the approved 15-credit cost. The film has AI-generated small-print imperfections and is concept imagery.
-- `design/assets/veila-hero-v2/`: refined bottle reference and approved 10-second MP4, retained separately from the interactive hero. Locally extracted frames are ignored.
-- `design/assets/veila-frames/`: archived first-version frames.
-- `design/assets/veila-bottle-opening-8s.mp4`: approved source clip; never played by the website.
-- `design/veila-flow-prompt.txt`: original animation brief.
-- `design/veila-hero-v2-prompt.txt`: current bottle art direction and 10-second film brief.
+The retail structure references [Sephora India's skincare collection](https://sephora.in/collection/skincare), with category coverage informed by [Hyphen's collection](https://letshyphen.com/collections/all). Veila's branding and content are original concept work. Generated media is illustrative and should be checked against approved packaging before any public launch.
+
+## Main files
+
+- `design/veila-hero.html`: complete page and hero media references.
+- `design/hero-film.js`: poster-first media lifecycle, explicit playback, restrained pointer motion and mobile navigation.
+- `design/water-button.js`: local droplet-outline animation and press feedback.
+- `design/hero-refined.css`: responsive hero, safe bottle/dropper framing and transparent CTA.
+- `design/storefront.js`: catalog, filtering, product details, ingredient explorer and browser-local bag.
+- `design/storefront.css` and `design/veila-refined.css`: collection, editorial sections, dialogs, typography and responsive layouts.
+- `design/assets/veila-hero-v4/`: canonical bottle master, `poster.jpg` and `ritual-final.mp4` for the current hero direction.
+- `design/assets/veila-products/`: catalog photographs, including the canonical serum and corrected gel moisturiser.
+- `tests/hero-motion.test.cjs`: media lifecycle, interaction and reduced-motion regression checks.
+
+Older film versions and photographic-layer experiments are retained as archives. They do not define the current hero behavior.
 
 [Working Google Flow project](https://flow.google.com/project/d256b2ba-d855-4c03-ba10-c19df781e4d8).
 
 ## Antigravity and GitHub workflow
 
-Open this repository folder in Antigravity. Edit the same source files, preview in Chrome, then commit and push to `origin/main`. GitHub is the shared source of truth. Public hosting and a custom domain are not configured; this remains a local design preview with source saved in the private repository.
+Open this repository folder in Antigravity, edit the same source, preview in Chrome, then commit and push to `origin/main`. GitHub is the shared source of truth. The design remains local with source in the private repository; public hosting and a custom domain are not configured. Do not upload the design or media to Superdesign without the user's authorization.
 
-## Verification
+## Checks
 
-Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, cap opening and closing, bounded droplets, ingredient library links, desktop/mobile layout, removed controls and browser errors. The active Flow MP4 was verified as exactly 10 seconds at 1280×720, with mouse seeking, explicit playback and responsive framing.
+```sh
+node --check design/hero-film.js
+node --check design/water-button.js
+node --check design/storefront.js
+node --test tests/hero-motion.test.cjs
+git diff --check
+```
+
+Before publishing, visually verify desktop and small-phone layouts, enlarged text, keyboard navigation, film loading/retry and playback, product filters, ingredient selection, dialogs and bag persistence. Verify each final media asset against the canonical packaging and confirm product information separately from this concept build.

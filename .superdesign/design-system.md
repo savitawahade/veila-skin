@@ -1,38 +1,33 @@
 # Veila Skin design direction
 
-Original skincare brand concept. Tagline: Your daily moment of care.
-Local preview only; user declined uploading design/media to Superdesign.
+An original skincare brand concept: **Your daily moment of care.** Keep the design and media local. The user declined Superdesign uploads; the private GitHub repository is the shared source of truth.
 
-## Tokens
+## Visual language
 
-- Ivory #F8F5EE; ink #283A2E; sage #61734F; sage surface #E7E9DF; blush #EEDDD6.
-- Cormorant Garamond: wordmark and editorial headings. Manrope: navigation, body, controls.
-- Quiet typography, generous whitespace, thin dividers, subtle metallic packaging accents.
+- Warm ivory `#F8F5EE`, cream `#F7F3EB`, ink `#354133`, sage `#637451`, muted text `#596550`, soft sage surfaces and restrained blush accents.
+- Cormorant Garamond for the wordmark and editorial headings; Manrope for primary navigation, body and controls. The FAQ pairs Lora headings with DM Sans questions and answers.
+- Use generous space, thin dividers, limestone, botanical textures and subtle silver packaging accents. Maintain readable contrast: product/body text 16px, secondary labels at least 12px, and controls at least 44px tall where applicable.
 
-## Layout
+## Hero and motion
 
-Fullscreen photographic hero with text on the left and bottle on the right. At narrow widths, text sits above the bottle. The bottle responds to mouse position and settles when movement stops; a slider supports touch and keyboard input. The updated 10-second film features a sage glass dropper bottle, ivory bulb, satin silver collar and clear glass base. Two hundred and forty still frames replace video playback; eased cursor tracking and adjacent-frame blending smooth the movement. Reduced-motion users control frames through the slider.
+The hero shows a still product image before any video request. **Play the ritual** explicitly loads and starts the film; provide pause, resume, replay, loading status and retry. Pause when offscreen or when the tab is hidden. Keep the poster available if media fails. No autoplay, pointer scrubbing, frame slider or reverse playback.
 
-Below the hero: category navigation, search/sort toolbar, three-column product grid (two on mobile), ritual editorial, brand philosophy, FAQ, footer. Fifteen coordinated AI-generated photographs show distinct product types and proposed ingredient highlights on the packaging. Warm stone, oat, sage, blush and silver packaging connect the collection to the hero.
+Current hero assets belong in `assets/veila-hero-v4/`: the canonical bottle master, `poster.jpg` and `ritual-final.mp4`. Preserve the complete bottle and raised dropper. Desktop and tablet show the full film with `object-fit: contain`. At widths up to 600px, a square media area uses `object-fit: cover` and `object-position: 80% center` to trim empty horizontal space while preserving the full frame height. Keep the 12px inset for safe parallax movement; never crop the bottle or dropper. Desktop copy sits to the left of the product composition. At narrow widths, navigation, copy, media and controls follow normal flow so text enlargement does not collide with a fixed media position.
 
-## Behavior and content
+Fine-pointer movement adds only a small eased parallax shift to the media, up to 4px horizontally and 3px vertically. Keep navigation and text outside that response. Reduced-motion preferences disable decorative movement; users may still explicitly play the film.
 
-Collection, philosophy and ritual controls navigate to their sections. Product dialogs expose size, texture, proposed ingredients, ritual position and concept availability. The browser-local demo bag supports add, quantities, removal and subtotal. No payment/checkout or order placement.
+The **Explore Veila** CTA is a water-drop silhouette with a fully transparent centre, a fine reflective rim and a 14px dark label. Never add an opaque white fill. Its outline morphs subtly only while the pointer is within the stable button area. Keep its location fixed, preserve the recognizable tip and use restrained press feedback. Provide a clear keyboard focus ring and disable animation for reduced motion.
 
-Fifteen products span cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Every card shows ingredient chips and links to an interactive ingredient atelier with a product selector and individual ingredient notes. Product names, formulas, packaging and INR prices are illustrative concepts, labeled in the collection and details. No fabricated reviews, efficacy claims, certifications or shipping promises. User's reference: Sephora India skincare browsing structure; preserve Veila's original branding and visual language.
+## Packaging consistency
 
+Use one canonical Dewdrop serum design across hero, product card, detail, ingredient explorer and ritual imagery. Preserve its exact bottle proportions, cap construction, label typography, product name, ingredient highlights and volume. Do not use generated text as a substitute for approved label artwork.
 
-### Current hero: photographic floating ingredients
-Use the transparent photographic layers in assets/veila-parallax. The bottle stays front-facing and moves gently with the pointer; aloe, oats and dewdrops move independently at different depths. Use small tilts, smooth easing and a warm ivory background. No literal 360-degree spin, autoplay or bottom control strip. The approved 10-second film is retained separately. Respect reduced-motion preferences.
+The Daily Ritual Set is a grouping of the same cleanser, serum and moisturiser photographs used for the individual products. Use the shared `.product-set` presentation in cards, details, bag, ingredient explorer and the ritual section. The gel moisturiser photograph must match its product name. Old film and photographic-layer experiments are archives, not active art direction.
 
-### Ingredient clarity and the opening ritual
-The hero opens its photographic dropper in response to pointer movement, with a photographic straight glass pipette, rounded dispensing tip and one slow serum drop at a time. No looping playback. Ingredient imagery stays delicate, with three labelled directions: aloe, oat and hyaluronic acid. The eight-entry ingredient library uses a warm limestone still life, expandable serif ingredient headings and useful plain-language notes with references. The Veila approach section earns credibility through clear ingredient, routine and concept information; do not add fabricated clinical claims, reviews, testing badges or certifications.
+## Collection and content
 
-### FAQ typography and voice
-The FAQ section pairs Lora 400 for the editorial heading with DM Sans 400/500 for questions and answers. Use readable 14px body text, generous line height, restrained numbering, and native expandable answers. Keep the language specific to Veila products and honest about the collection's development stage; avoid technical preview terminology and invented shipping promises.
+Fifteen concepts span face, sun, lip and body care. Use a three-column catalog on wide screens, two columns at intermediate widths and one column on small phones. Product names, sizes, textures and ingredient highlights take priority over decorative tags. Keep filters, search, sorting, product details and ingredient navigation understandable with keyboard and touch.
 
-### Explore Veila water effect
-The entire Explore Veila CTA is a translucent water droplet, with a rounded body, tapered upper-right tip, fully transparent centre with no fill or backdrop filter, thin edge reflections and dark readable text inside. Keep the same clear fill on hover. Mouse movement across the hero gently translates and tilts the whole button using critically damped motion with continuous velocity. Continuously morph the actual corner radii from the smoothed pointer position so the silhouette changes fluidly. Use subtle, smoothed velocity-based stretch and soft press feedback. Measure its stationary wrapper to avoid pointer feedback jitter. Preserve native collection navigation, visible keyboard focus and touch press feedback; reduced-motion preference suppresses animation.
+The eight-entry ingredient library explains common ingredient roles and links to sources. Product details distinguish proposed ingredients from final formulas. The browser-local preview bag supports quantities, removal and subtotal; it does not place orders or collect payments.
 
-### Current hero film
-The active hero uses the 10-second Google Flow Natural Serum Ritual film in assets/veila-hero-v3. Use the photographic scene with the bottle on the right and clear copy on the left. Mouse movement eases through the film; there is no autoplay. Provide an explicit Play the ritual / Pause film control for touch and keyboard, pause when offscreen, and respect reduced motion. The former independent bottle and ingredient layers are archived. Keep the transparent morphing water-drop CTA unchanged.
+Use specific, calm language about the collection's development stage. Do not invent efficacy, SPF/UVA results, reviews, certifications, availability or shipping promises. Preserve the concept disclosure without presenting development assumptions as finished product facts.
