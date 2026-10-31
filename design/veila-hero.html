@@ -25,7 +25,7 @@
 .scene canvas{position:absolute;inset:0}.scene canvas[hidden]{display:none}
 </style>
 <link rel="stylesheet" href="storefront.css">
-<link rel="stylesheet" href="veila-refined.css?v=customer-care-1">
+<link rel="stylesheet" href="veila-refined.css?v=lofi-1">
 <link rel="stylesheet" href="hero-refined.css">
 </head>
 <body>
@@ -50,7 +50,7 @@
     <p class="intro">Aloe, oat and hyaluronic acid. Discover the ingredient story behind our signature Dewdrop Daily Serum.</p>
     <div class="cta-row"><span class="water-button-anchor"><button class="primary water-button" type="button" data-jump="collection"><span class="water-button-label">Explore Veila <span aria-hidden="true">↗</span></span></button></span><button class="text-link" type="button" data-jump="philosophy">Our philosophy</button></div>
   </section>
-  <div class="film-controls"><span class="film-hint">Move your mouse to explore</span><button type="button" class="film-toggle" id="film-toggle" aria-pressed="false">Play the ritual</button></div>
+  <div class="ritual-sound"><button type="button" class="lofi-toggle" id="lofi-toggle" aria-pressed="false" aria-label="Play lo-fi background music"><span class="lofi-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="lofi-label">Play lo-fi</span></button><span class="lofi-status" id="lofi-status" role="status"></span></div>
 
 </section>
 <div class="editorial-strip"><span>VEILA / THE EVERYDAY COLLECTION</span><p class="serif">A softer kind of <em>everyday.</em></p><a href="#ingredients">Get to know what’s inside ↗</a></div>
@@ -95,7 +95,8 @@
 <div class="toast" id="preview-status" role="status" aria-live="polite"></div>
 <dialog class="shop-dialog" id="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Close product details" autofocus>×</button><div id="product-detail"></div></dialog>
 <dialog class="shop-dialog bag-dialog" id="bag-dialog" aria-labelledby="bag-title"><button type="button" class="dialog-close" data-close aria-label="Close shopping bag" autofocus>×</button><div class="bag-content"><p class="section-kicker">A moment of your own</p><h2 class="serif" id="bag-title">Your ritual bag.</h2><p class="bag-intro">Your collection, coming together. This preview bag is saved only in this browser.</p><div id="bag-items"></div><div class="bag-total"><span>Concept subtotal</span><strong id="bag-total">₹0</strong></div><p class="bag-intro">Shopping preview · Checkout isn't open yet. No orders or payments are taken.</p><button class="primary" type="button" data-continue>Continue exploring ↗</button></div></dialog>
-<script src="hero-film.js"></script>
+<script src="hero-film.js?v=lofi-1"></script>
+<script src="lofi.js"></script>
 <script src="water-button.js"></script>
 <script src="storefront.js"></script>
 </body>

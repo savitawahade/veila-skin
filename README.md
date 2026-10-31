@@ -16,7 +16,7 @@ Visit http://127.0.0.1:4173/. No build or package installation is required. Goog
 
 ## Design and functionality
 
-- Full-viewport Google Flow video hero using the new 10-second Natural Serum Ritual film. Mouse movement scrubs the opening sequence with eased seeking; leaving the hero returns to the opening shot. The film is encoded with every frame independently seekable. A Play the ritual / Pause film button supports touch and keyboard, and playback pauses offscreen or when the tab is hidden. No autoplay. Reduced-motion preferences disable pointer scrubbing. The transparent, morphing water-drop CTA remains in place.
+- Full-viewport Google Flow video hero using the new 10-second Natural Serum Ritual film. Mouse movement scrubs the opening sequence with eased seeking; leaving the hero returns to the opening shot. The film is encoded with every frame independently seekable. The video play button and mouse hint are removed; the film remains controlled by mouse movement with no autoplay. Reduced-motion preferences disable pointer scrubbing. The transparent, morphing water-drop CTA remains in place.
 - Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Coordinated product photographs show the product type and proposed ingredient highlights directly on the packaging. The ritual set reuses the same cleanser, serum and moisturiser images as the individual products.
 - Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
 - An eight-entry ingredient library with editorial photography, expandable explanations, source links and links into the corresponding product explorer. A dedicated Veila approach section explains ingredient transparency, routine information and concept status.
@@ -32,7 +32,7 @@ The retail structure references [Sephora India's skincare collection](https://se
 
 - `design/veila-hero.html`: full page.
 - `design/water-button.js`: smooth movement of the entire droplet-shaped Explore Veila button, with gentle tilt, liquid stretch, press feedback and reduced-motion support.
-- `design/hero-film.js`: mouse-controlled film, explicit play/pause, reduced-motion handling and mobile navigation.
+- `design/hero-film.js`: mouse-controlled film, reduced-motion handling and mobile navigation.
 - `design/hero-parallax.js`: archived photographic layer interaction.
 - `design/assets/veila-parallax/`: transparent photographic bottle, open bottle, detached dropper, aloe, oat and serum layers, plus the ingredient editorial still life.
 - `design/veila-parallax-prompts.txt`: built-in image generation prompts for those layers.
@@ -77,3 +77,7 @@ Run `python3 scripts/build-pages.py` to produce the static website in `dist/`. T
 The repository is public, as authorized, to use free GitHub Pages. Settings → Pages uses GitHub Actions as the publishing source. Run the Deploy Veila to GitHub Pages workflow manually when needed; future website changes pushed to `main` deploy automatically.
 
 GitHub Pages website address: https://savitawahade.github.io/veila-skin/.
+
+## Optional lo-fi music
+
+The floating Play lo-fi / Pause lo-fi button starts an original 72 BPM instrumental generated locally with Web Audio in `design/lofi.js`. It uses gentle chords, melody, bass and soft percussion; no third-party tracks or network audio services are used. Music starts only after a click, fades in/out, and stops when the tab is hidden. Reduced-motion preferences disable the sound-bar animation. The bottle video stays paused and follows the pointer independently.
