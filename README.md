@@ -53,7 +53,7 @@ The retail structure references [Sephora India's skincare collection](https://se
 
 ## Antigravity and GitHub workflow
 
-Open this repository folder in Antigravity. Edit the same source files, preview in Chrome, then commit and push to `origin/main`. GitHub is the shared source of truth. Public hosting and a custom domain are not configured; this remains a local design preview with source saved in the private repository.
+Open this repository folder in Antigravity. Edit the same source files, preview in Chrome, then commit and push to `origin/main`. GitHub is the shared source of truth. The GitHub Pages workflow is prepared in `.github/workflows/pages.yml`. It packages only the active website into `dist/`, preserving the first screen and relative asset URLs. The old ChatGPT Sites deployment has had its website content removed and public access disabled.
 
 ## Verification
 
@@ -69,3 +69,11 @@ The first screen is intentionally preserved from `a473eae` (the pre-team design)
 - Ingredient explanations are specific to the selected concept and do not imply tested product results.
 
 Verified unchanged first-screen computed styles at 1440px and 390px, mobile 16px/12px product text, product dialogs, collection expansion, quantity limit, bag removal, announcements, JavaScript syntax and clean browser error logs.
+
+## GitHub Pages setup
+
+Run `python3 scripts/build-pages.py` to produce the static website in `dist/`. The published entry page is an exact copy of `design/veila-hero.html`; archived media, design briefs, local hosting checkouts and repository history are excluded.
+
+GitHub currently blocks Pages for this private repository on the account’s plan. Keeping `savitawahade/veila-skin` private requires GitHub Pro (or another eligible plan). Once eligible, open Settings → Pages and select GitHub Actions as the source, then run the Deploy Veila to GitHub Pages workflow. Future website changes pushed to `main` deploy automatically.
+
+Expected address after successful deployment: https://savitawahade.github.io/veila-skin/ (not live until deployment succeeds).
