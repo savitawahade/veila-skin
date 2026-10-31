@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Veila Skin — your daily moment of care. An interactive skincare design concept.">
+<title>Veila Skin — A little ritual. A softer day.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#283a2e;--cream:#f8f5ee;--sage:#61734f;--muted:#697161;--line:rgba(40,58,46,.2)}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Manrope,Arial,sans-serif}button,a,input{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #536a47;outline-offset:6px}a{color:inherit;text-decoration:none}.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.hero{position:relative;isolation:isolate;width:100%;height:100svh;min-height:640px;overflow:hidden;background:#e6dfd1}
+.scene{position:absolute;inset:0;z-index:-3;overflow:hidden;pointer-events:none}.scene img{width:100%;height:100%;display:block;object-fit:cover;object-position:57% center;transform:translateX(10%)}.shade{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(248,245,238,.92) 0%,rgba(248,245,238,.8) 24%,rgba(248,245,238,.15) 49%,transparent 65%),linear-gradient(0deg,rgba(248,245,238,.95),transparent 20%,transparent 82%,rgba(248,245,238,.3))}
+.nav{position:absolute;top:0;left:5%;right:5%;height:112px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;border-bottom:1px solid var(--line);z-index:3}.nav-links{display:flex;gap:28px}.nav button{background:none;border:0;padding:12px 0;min-height:44px;font-size:11px;color:var(--ink)}.brand{justify-self:center;display:flex;flex-direction:column;align-items:center}.brand-name{font-size:46px;letter-spacing:.13em;line-height:.9;padding-left:.13em}.brand-sub{font-size:8px;letter-spacing:.4em;padding-left:.4em;margin-top:10px}.nav-right{justify-self:end;display:flex;align-items:center;gap:25px}.bag-count{margin-left:7px;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid #8f9b83;border-radius:50%;font-size:9px}.mobile-menu{display:none!important}
+.copy{position:absolute;left:6%;top:50%;transform:translateY(-42%);max-width:44%;pointer-events:none}.copy button,.copy a{pointer-events:auto}.eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:13px;align-items:center;margin-bottom:26px}.eyebrow:before{content:'';width:27px;height:1px;background:#859479}.headline{font-weight:400;font-size:clamp(67px,6.8vw,110px);line-height:.94;letter-spacing:-.045em;margin:0 0 27px}.headline em{font-weight:400;color:var(--sage)}.intro{font-size:13px;line-height:1.9;max-width:295px;color:#53604c;margin:0 0 28px}.cta-row{display:flex;gap:27px;align-items:center}.primary{display:flex;align-items:center;gap:40px;background:var(--ink);color:var(--cream);border:1px solid var(--ink);padding:18px 22px;font-size:11px;transition:background .2s}.primary:hover{background:#42513b}.text-link{background:none;border:0;border-bottom:1px solid #8d9b81;padding:9px 0;min-height:44px;font-size:10px;color:var(--ink)}
+.scene-note{position:absolute;right:5%;top:145px;font-size:9px;letter-spacing:.2em;text-transform:uppercase}.bottom{position:absolute;bottom:26px;left:5%;right:5%;display:grid;grid-template-columns:1fr 270px 1fr;align-items:end;gap:30px}.signature{font-size:21px;line-height:1.15}.signature small{display:block;font-family:Manrope,Arial,sans-serif;font-size:8px;letter-spacing:.16em;margin-top:10px;color:var(--muted)}.interaction{text-align:center;max-width:100%;color:var(--ink)}.interaction label{display:block;font-size:9px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:7px}.touch-hint{display:none}.range-line{display:flex;gap:12px;align-items:center;height:32px}.range-line span{font-size:13px}.range-line input{display:block;width:100%;appearance:none;-webkit-appearance:none;height:2px;background:rgba(40,58,46,.3);cursor:ew-resize;touch-action:pan-y;margin:15px 0;border:0;border-radius:0}.range-line input::-webkit-slider-thumb{appearance:none;width:13px;height:13px;border:1px solid var(--ink);background:var(--cream);border-radius:50%;box-shadow:0 0 0 8px transparent}.range-line input::-moz-range-thumb{width:12px;height:12px;background:var(--cream);border:1px solid var(--ink);border-radius:50%}.frame-info{display:flex;align-items:center;justify-content:flex-end;gap:20px}.frame-count{font-size:10px;font-variant-numeric:tabular-nums;letter-spacing:.08em}.frame-count span{opacity:.5}.fullscreen{background:rgba(248,245,238,.35);border:1px solid var(--line);width:44px;height:44px;display:grid;place-items:center;color:var(--ink);font-size:22px}.fullscreen:hover{background:rgba(248,245,238,.7)}.fullscreen[hidden]{display:none}.status{font-size:8px;letter-spacing:.1em;color:#65705d;min-height:12px;margin-top:4px}
+.mobile-panel{display:none;position:absolute;top:90px;left:20px;right:20px;padding:20px;background:rgba(248,245,238,.97);border:1px solid var(--line);z-index:4}.mobile-panel.is-open{display:flex;gap:24px}.mobile-panel button{border:0;background:none;font-size:12px;padding:10px 0}.toast{position:fixed;bottom:110px;left:50%;transform:translate(-50%,10px);max-width:calc(100vw - 32px);width:max-content;background:#283a2e;color:#f8f5ee;padding:14px 20px;font-size:12px;line-height:1.6;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:8}.toast.visible{opacity:1;transform:translate(-50%,0)}
+@media(min-aspect-ratio:2/1){.scene img{object-position:57% 58%}.headline{font-size:clamp(70px,6vw,100px)}.copy{transform:translateY(-38%)}}
+@media(max-width:1050px){.nav{left:4%;right:4%;height:98px}.nav-links{gap:19px}.nav-right{gap:15px}.nav button{font-size:10px}.copy{left:5%;max-width:47%}.headline{font-size:75px}.scene-note{top:124px}.intro{font-size:12px;max-width:270px}.bottom{left:4%;right:4%;grid-template-columns:1fr 230px 1fr;gap:20px}.signature{font-size:18px}.primary{gap:25px}}
+@media(max-width:760px){.hero{min-height:720px}.nav{height:86px;left:22px;right:22px}.nav-links{display:none}.mobile-menu{display:block!important;justify-self:start}.brand-name{font-size:36px}.brand-sub{font-size:7px;margin-top:8px}.nav-right .ritual-link{display:none}.nav-right{gap:0}.nav button{font-size:10px}.scene{top:38%;height:55%;bottom:auto}.scene img{object-position:57% center;transform:none}.shade{background:linear-gradient(180deg,#f8f5ee 0%,rgba(248,245,238,.98) 24%,rgba(248,245,238,.4) 43%,transparent 62%,rgba(248,245,238,.12) 76%,#f8f5ee 95%)}.copy{top:116px;left:24px;right:24px;max-width:none;transform:none}.eyebrow{font-size:8px;letter-spacing:.16em;margin-bottom:15px}.eyebrow:before{width:20px}.headline{font-size:clamp(48px,12vw,68px);line-height:.94;margin-bottom:15px;letter-spacing:-.045em}.intro{font-size:11px;line-height:1.7;max-width:270px;margin-bottom:16px}.primary{font-size:10px;padding:13px 17px;gap:27px}.text-link{font-size:9px}.cta-row{gap:23px}.scene-note{display:none}.bottom{bottom:18px;left:24px;right:24px;grid-template-columns:1fr auto;gap:12px}.signature{display:none}.interaction{max-width:270px;text-align:left}.interaction label{font-size:8px}.mouse-hint{display:none}.touch-hint{display:inline}.frame-info{gap:13px;padding-bottom:12px}.frame-count{font-size:8px}.fullscreen{width:36px;height:36px;font-size:20px}.status{font-size:7px}.range-line{height:25px}.toast{bottom:100px}}
+@media(max-height:690px) and (min-width:761px){.nav{height:85px}.copy{transform:translateY(-35%)}.headline{font-size:70px;margin-bottom:19px}.eyebrow{margin-bottom:17px}.intro{margin-bottom:19px}.bottom{bottom:18px}.scene-note{top:115px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.mouse-hint{display:none}.touch-hint{display:inline}}
+</style>
+<link rel="stylesheet" href="storefront.css">
+</head>
+<body>
+<a class="skip-link" href="#collection">Skip to collection</a>
+<main>
+<section class="hero" id="hero" aria-label="Veila Skin introduction">
+  <div class="scene" aria-hidden="true"><img id="bottle-frame" src="assets/veila-frames/frame-00.jpg" alt="" fetchpriority="high" width="1280" height="720"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <header class="nav" aria-label="Main navigation">
+    <nav class="nav-links" aria-label="Explore Veila"><button type="button" data-jump="collection">The collection</button><button type="button" data-jump="philosophy">Our philosophy</button></nav>
+    <button class="mobile-menu" id="menu-toggle" type="button" aria-controls="mobile-navigation" aria-expanded="false">Menu +</button>
+    <a id="veila-home" class="brand" href="#hero" aria-label="Veila Skin home"><span class="brand-name serif">VEILA</span><span class="brand-sub">SKIN</span></a>
+    <div class="nav-right"><button type="button" class="ritual-link" data-jump="ritual">Find your ritual ↗</button><button type="button" data-bag aria-label="Shopping bag, zero items">Bag <span class="bag-count">0</span></button></div>
+  </header>
+  <nav class="mobile-panel" id="mobile-navigation" aria-label="Mobile navigation"><button type="button" data-jump="collection">The collection</button><button type="button" data-jump="philosophy">Our philosophy</button></nav>
+  <section class="copy" aria-labelledby="headline">
+    <div class="eyebrow">A moment, just for you</div>
+    <h1 class="headline serif" id="headline">A little ritual.<br>A <em>softer</em> day.</h1>
+    <p class="intro">Your daily moment of care. Meet a simpler approach to your skincare ritual.</p>
+    <div class="cta-row"><button class="primary" type="button" data-jump="collection">Explore Veila <span aria-hidden="true">↗</span></button><button class="text-link" type="button" data-jump="philosophy">Our philosophy</button></div>
+  </section>
+  <div class="scene-note">VEILA · THE DAILY RITUAL</div>
+  <footer class="bottom">
+    <div class="signature serif">Skincare, at your pace.<small>THE ART OF TAKING A MOMENT</small></div>
+    <div class="interaction"><label for="ritual-progress"><span class="mouse-hint">Move your mouse to unfold the ritual</span><span class="touch-hint">Slide to unfold the ritual</span></label><div class="range-line"><span aria-hidden="true">←</span><input id="ritual-progress" type="range" min="0" max="47" step="1" value="0" aria-label="Bottle opening" aria-valuetext="Bottle closed"><span aria-hidden="true">→</span></div><div class="status" id="scene-status" role="status">YOUR MOMENT. YOUR PACE.</div></div>
+    <div class="frame-info"><div class="frame-count"><output id="frame-count" aria-hidden="true">01</output><span> / 48</span></div><button class="fullscreen" id="fullscreen-toggle" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">⛶</button></div>
+  </footer>
+</section>
+<section class="section collection" id="collection" aria-labelledby="collection-title">
+  <div class="section-top"><div><p class="section-kicker">The Veila collection</p><h2 class="section-heading serif" id="collection-title">Small rituals.<br><em>Everyday essentials.</em></h2></div><p>A considered collection for the moments you make your own. Find your texture, your step, your little everyday ritual.</p></div>
+  <div class="category-tabs" role="group" aria-label="Filter by product category">
+    <button type="button" data-category="All" aria-pressed="true">All essentials</button><button type="button" data-category="Cleansers" aria-pressed="false">Cleansers</button><button type="button" data-category="Serums" aria-pressed="false">Serums</button><button type="button" data-category="Moisturisers" aria-pressed="false">Moisturisers</button><button type="button" data-category="Toners" aria-pressed="false">Toners</button><button type="button" data-category="Lip care" aria-pressed="false">Lip care</button><button type="button" data-category="Sets" aria-pressed="false">Ritual sets</button>
+  </div>
+  <div class="shop-tools"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="product-search" type="search" aria-label="Search the collection" placeholder="Search your next little ritual"></label><span class="product-count" id="product-count" role="status">6 ritual essentials</span><label class="sort-wrap" for="product-sort">Sort by <select id="product-sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name: A to Z</option></select></label></div>
+  <div class="product-grid" id="product-grid"></div>
+  <noscript><p>Enable JavaScript to explore the collection and interactive product details.</p></noscript>
+  <p class="catalog-note">A first look at Veila. Product names, formulas, packaging and prices are concepts for this preview. Shopping is a demo; no orders or payments are taken.</p>
+</section>
+<section class="section ritual" id="ritual" aria-labelledby="ritual-title">
+  <div class="ritual-picture"><img src="assets/veila-frames/frame-32.jpg" width="1280" height="720" loading="lazy" alt="Veila's frosted sage bottle with its cap lifted, surrounded by illustrative botanicals"><span>THE DAILY RITUAL / VEILA SKIN</span></div>
+  <div class="ritual-copy"><div class="section-kicker">Find your rhythm</div><h2 class="section-heading serif" id="ritual-title">Three little steps.<br><em>One moment for you.</em></h2><p>Less rushing. More ritual. Get to know the three essentials at the heart of our first collection.</p><ol class="ritual-steps"><li><span class="step-number">01</span><div><span class="step-title">A fresh beginning</span><span class="step-detail">Cloud Milk Cleanser · the first step</span></div><button class="step-link" type="button" data-detail="cleanser" aria-label="Explore Cloud Milk Cleanser">↗</button></li><li><span class="step-number">02</span><div><span class="step-title">A little layer of care</span><span class="step-detail">Dewdrop Daily Serum · the middle moment</span></div><button class="step-link" type="button" data-detail="serum" aria-label="Explore Dewdrop Daily Serum">↗</button></li><li><span class="step-number">03</span><div><span class="step-title">A softer finish</span><span class="step-detail">Soft Veil Moisturiser · the final layer</span></div><button class="step-link" type="button" data-detail="cream" aria-label="Explore Soft Veil Moisturiser">↗</button></li></ol><button type="button" class="outline-button" data-detail="set">Meet the daily ritual set ↗</button></div>
+</section>
+<section class="section philosophy" id="philosophy" aria-labelledby="philosophy-title"><p class="section-kicker">The way we see care</p><h2 class="section-heading serif" id="philosophy-title">Not another thing to do.<br>A little time to <em>just be.</em></h2><p>Veila began with a simple idea: your skincare routine can be a moment you look forward to. Thoughtful textures, quiet design, and space to make a ritual of your own.</p></section>
+<section class="section details-section" id="details" aria-labelledby="details-title"><div><p class="section-kicker">A few thoughtful details</p><h2 class="section-heading serif" id="details-title">Good to know.</h2></div><div class="faq"><details><summary>How do I explore the collection?</summary><p>Browse by category, search a product or proposed ingredient, and sort by price. Open any product to see its size, texture direction and place in the Veila collection.</p></details><details><summary>Are these products available to buy?</summary><p>This is the first Veila Skin concept storefront. The bag lets you try the shopping experience, but checkout and payments are not connected. Prices and packaging are illustrative.</p></details><details><summary>Where can I find the ingredients?</summary><p>Each product has an ingredient story in its details. These are proposed directions, not finalized formulas. Full ingredient lists, suitability and application directions will be added before products launch.</p></details><details><summary>What about delivery and returns?</summary><p>Delivery areas, timelines and returns will be confirmed when Veila is ready to accept orders. No shipping or return promise is made in this preview.</p></details></div></section>
+</main>
+<footer class="site-footer"><div class="footer-top"><div><a href="#hero" class="footer-wordmark serif" aria-label="Veila Skin, back to top">VEILA</a><p class="footer-tagline">Your daily moment of care.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="#collection">The collection</a><a href="#ritual">Your ritual</a><a href="#philosophy">Our philosophy</a><a href="#details">Good to know</a></nav></div><div class="footer-bottom"><span>© 2026 Veila Skin · Brand concept</span><span>Made for a softer everyday.</span><a href="#hero">Back to the beginning ↑</a></div></footer>
+<div class="toast" id="preview-status" role="status" aria-live="polite"></div>
+<dialog class="shop-dialog" id="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Close product details" autofocus>×</button><div id="product-detail"></div></dialog>
+<dialog class="shop-dialog bag-dialog" id="bag-dialog" aria-labelledby="bag-title"><button type="button" class="dialog-close" data-close aria-label="Close shopping bag" autofocus>×</button><div class="bag-content"><p class="section-kicker">A moment of your own</p><h2 class="serif" id="bag-title">Your ritual bag.</h2><p class="bag-intro">Your collection, coming together. This preview bag is saved only in this browser.</p><div id="bag-items"></div><div class="bag-total"><span>Concept subtotal</span><strong id="bag-total">₹0</strong></div><p class="bag-intro">Shopping preview · Checkout isn't open yet. No orders or payments are taken.</p><button class="primary" type="button" data-continue>Continue exploring ↗</button></div></dialog>
+<script>
+(()=>{
+  const hero=document.getElementById('hero');
+  const image=document.getElementById('bottle-frame');
+  const range=document.getElementById('ritual-progress');
+  const counter=document.getElementById('frame-count');
+  const status=document.getElementById('scene-status');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+  const count=48;
+  const frames=new Array(count);
+  let target=0,displayed=0,scheduled=false,failed=false;
+  const frameURL=index=>'assets/veila-frames/frame-'+String(index).padStart(2,'0')+'.jpg';
+  frames[0]=image;
+  function render(){
+    scheduled=false;
+    if(frames[target]?.complete&&frames[target].naturalWidth&&target!==displayed){
+      displayed=target;image.src=frames[displayed].src;
+      counter.textContent=String(displayed+1).padStart(2,'0');
+      range.setAttribute('aria-valuetext',displayed<10?'Bottle closed':displayed<25?'Bottle opening':'Ingredients revealed');
+    }
+  }
+  function queue(){if(!scheduled){scheduled=true;requestAnimationFrame(render);}}
+  function setFrame(index){target=Math.max(0,Math.min(count-1,Math.round(index)));range.value=String(target);queue();}
+  // Load still images, not a video player. No animation runs when the pointer stops.
+  let next=1;
+  async function preload(){
+    while(next<count){
+      const index=next++;
+      const frame=new Image();frame.decoding='async';frame.src=frameURL(index);
+      frames[index]=frame;
+      try{await frame.decode();if(index===target)queue();}
+      catch{failed=true;status.textContent='SOME FRAMES COULD NOT LOAD';}
+    }
+  }
+  Promise.all(Array.from({length:4},()=>preload())).then(()=>{if(!failed)status.textContent='YOUR MOMENT. YOUR PACE.';});
+  hero.addEventListener('pointermove',event=>{
+    if(event.pointerType!=='mouse'||!finePointer.matches||reduce.matches)return;
+    if(event.target.closest('button,a,input,.mobile-panel,.interaction'))return;
+    const bounds=hero.getBoundingClientRect();
+    setFrame((event.clientX-bounds.left)/bounds.width*(count-1));
+  });
+  range.addEventListener('input',()=>setFrame(Number(range.value)));
+  const fullscreen=document.getElementById('fullscreen-toggle');
+  if(!document.fullscreenEnabled)fullscreen.hidden=true;
+  fullscreen.addEventListener('click',async()=>{
+    try{if(document.fullscreenElement)await document.exitFullscreen();else await hero.requestFullscreen();}
+    catch{status.textContent='FULLSCREEN IS NOT AVAILABLE IN THIS BROWSER';}
+  });
+  document.addEventListener('fullscreenchange',()=>{const active=!!document.fullscreenElement;fullscreen.setAttribute('aria-label',active?'Exit fullscreen':'Enter fullscreen');fullscreen.title=active?'Exit fullscreen':'Enter fullscreen';});
+  const menu=document.getElementById('menu-toggle');
+  menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'Close −':'Menu +';document.getElementById('mobile-navigation').classList.toggle('is-open',open);});
+
+})();
+</script>
+<script src="storefront.js"></script>
+</body>
+</html>

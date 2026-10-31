@@ -1,0 +1,44 @@
+VEILA SKIN — 8-SECOND HERO VIDEO
+
+Status: original concept prompt. Not copied from motion.ai or Framerate.
+Ingredients below are visual placeholders, not a verified product formula.
+
+GOOGLE FLOW PROMPT
+
+Create an exactly 8-second, single-take, photorealistic luxury skincare product film in landscape 16:9, with smooth cinematic motion and a seamless loop. Use the supplied Veila bottle reference consistently throughout. If a storyboard sheet is supplied, use it as a sequence reference only: output one continuous full-frame scene, never a collage or split screen.
+
+Art direction: soft retro futurism, warm ivory studio cyclorama, muted sage frosted glass, rounded polished chrome details, subtle blush reflections. Elegant, calm, tactile and minimal. A small ivory circular plinth grounds the bottle. Soft broad studio lighting, believable reflections, gentle shadows and restrained depth of field. No neon cyberpunk or dark sci-fi environment.
+
+Product: one rounded cylindrical 30ml frosted sage glass serum bottle with one short rounded chrome screw cap. Preserve its proportions, material and label throughout. The label reads VEILA with smaller SKIN beneath. Keep the bottle opaque enough that the ingredient sequence is a visual metaphor, not a technical depiction of a formula. No ingredient names or efficacy claims in the video.
+
+Composition: bottle slightly right of center, with the left third remaining quiet for website heading text added later in HTML. Keep the bottle, cap and ingredients within the central safe area, with space above the cap. Do not bake website headings, subtitles, buttons or watermarks into the video.
+
+Timeline:
+0–1.5 seconds: the closed bottle rests on its plinth. Gentle highlight glides across its frosted surface. Camera is locked in a three-quarter product view.
+1.5–3 seconds: the cap slowly turns to unscrew and lifts vertically a short distance above the neck, aligned with it. The bottle stays intact and stationary.
+3–5 seconds: a delicate aloe slice, a small oat sprig and several clear water droplets emerge into a graceful suspended arrangement around the upper bottle. Treat them as illustrative ingredient motifs, not oversized solid objects physically forced through the bottle opening. Maintain open space around the readable label.
+5–6.5 seconds: the ingredients travel in a subtle, slow arc around the bottle. No fast spins. Their movement eases gently and follows continuous paths with no jumps or sudden appearance.
+6.5–8 seconds: the motifs smoothly return and disappear into the neck area, the cap lowers and turns closed. Return exactly to the first frame's composition, lighting and object positions. Finish with the closed bottle resting in place, ready for a seamless loop.
+
+Continuity: exactly one bottle and one cap. Consistent VEILA label. Stable camera and exposure. Realistic glass and chrome. Smooth acceleration and deceleration. No cuts, transitions, zoom jumps, morphing packaging, duplicate labels, extra caps, hands, humans, broken glass, explosions, fast particles or spills. No voiceover or music; the website hero will play muted.
+
+Export the highest available landscape resolution without changing the 8-second duration.
+
+FIVE KEYFRAME BRIEFS
+
+01 / 0s — Closed bottle; establish packaging, lighting, plinth and copy space.
+02 / 2s — Cap floating above neck; all other scene details unchanged.
+03 / 4s — Aloe, oat and clear droplets in a gentle ingredient reveal.
+04 / 6s — Motifs in a balanced slow arc; label still clear.
+05 / 8s — Closed bottle again; match frame 01 for the loop.
+
+WEBSITE INTEGRATION NOTES
+
+Use the video as a presentation asset, with live HTML text and controls over it.
+Hero headline: Your daily moment of care.
+Brand: VEILA / SKIN
+Primary action: Explore the collection.
+Use muted, playsinline playback with a poster image and a pause control.
+Respect reduced-motion preferences with the still poster.
+Do not present these ingredient placeholders as a verified formulation.
+Replace the placeholder hero video only after the generated clip has been reviewed.

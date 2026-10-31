@@ -7,3 +7,10 @@ build/
 !.env.example
 *.log
 .superdesign/tmp/
+design/assets/flow-*.jpg
+design/assets/flow-*.png
+design/assets/veila-in-your-flow.png
+design/assets/veila-hero-desktop.jpg
+design/assets/veila-hero-mobile.jpg
+
+design/assets/veila-storefront-*.jpg
