@@ -2,7 +2,6 @@
   const hero = document.querySelector('#hero');
   const scene = document.querySelector('#bottle-viewer');
   const film = document.querySelector('#hero-film');
-  const toggle = document.querySelector('#film-toggle');
   const status = document.querySelector('#film-status');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
@@ -25,187 +24,156 @@
     });
     panel.addEventListener('click', closeMenu);
   }
-  if (!hero || !scene || !film || !toggle) return;
+  if (!hero || !scene || !film) return;
 
-  let phase = 'idle';
-  let command = 0;
-  let visible = true;
-  let loadTimer = 0;
-  let frame = 0;
-  let last = 0;
+  // Every frame is independently encoded. The video stays paused: gestures
+  // advance a forward-only timeline, so a falling drop never travels upward.
+  const START = 1.6;
+  let end = 9.8;
+  let position = START, target = START;
+  let loaded = false, failed = false, visible = true;
+  let frame = 0, last = 0, loadTimer = 0;
+  let previous = null;
   let x = 0, y = 0, tx = 0, ty = 0;
-
-  // No source is attached until an explicit request to play. Pointer motion
-  // changes only the composition, never the video's timeline or direction.
   film.preload = 'none';
-  function announce(message) {
-    if (status) status.textContent = message;
-  }
-  function updateControl() {
-    const labels = {
-      idle: 'Play the ritual', loading: 'Loading film…', playing: 'Pause film',
-      paused: 'Resume ritual', ended: 'Play the ritual', error: 'Retry film'
-    };
-    toggle.textContent = labels[phase];
-    toggle.disabled = phase === 'loading';
-    toggle.setAttribute('aria-pressed', String(phase === 'playing'));
-    toggle.setAttribute('aria-busy', String(phase === 'loading'));
-  }
-  function clearLoadTimer() {
-    clearTimeout(loadTimer);
-    loadTimer = 0;
-  }
-  function stop(reason) {
-    const active = phase === 'playing' || phase === 'loading';
-    command += 1;
-    clearLoadTimer();
-    film.pause();
-    if (active) {
-      phase = reason === 'explicit' && film.currentTime > 0 ? 'paused' : 'idle';
-      announce(reason === 'explicit' ? 'Film paused.' : 'Film paused. Play the ritual to start again.');
-      updateControl();
-    }
-  }
-  function fail() {
-    command += 1;
-    clearLoadTimer();
-    phase = 'error';
-    film.pause();
-    hero.classList.remove('film-ready');
-    announce('The film could not load. The product image is still available. Try again when your connection is ready.');
-    updateControl();
-  }
-  function showFrame() {
-    if (phase !== 'idle' && phase !== 'error' && film.readyState >= 2) {
-      hero.classList.add('film-ready');
-    }
-  }
-  async function play() {
-    if (phase === 'loading') return;
-    if (phase === 'playing') {
-      stop('explicit');
-      return;
-    }
-    if (!visible || document.hidden) return;
-    const resume = phase === 'paused';
-    const retry = phase === 'error';
-    const source = film.dataset.playbackSrc || film.dataset.src;
-    if (!source) {
-      fail();
-      return;
-    }
-    const thisCommand = ++command;
-    phase = 'loading';
-    announce('Loading the ritual film.');
-    updateControl();
-    loadTimer = setTimeout(() => {
-      if (command === thisCommand && phase === 'loading') fail();
-    }, 20000);
-    try {
-      if (!film.getAttribute('src') || retry) {
-        film.src = source;
-        film.load();
-      }
-      if (!resume) film.currentTime = 0;
-      await film.play();
-      if (command !== thisCommand) return;
-      if (!visible || document.hidden) {
-        stop('hidden');
-        return;
-      }
-      clearLoadTimer();
-      phase = 'playing';
-      showFrame();
-      announce('Ritual film playing.');
-      updateControl();
-    } catch {
-      if (command === thisCommand) fail();
-    }
-  }
-  toggle.addEventListener('click', play);
-  film.addEventListener('loadeddata', showFrame);
-  film.addEventListener('error', () => {
-    if (phase !== 'idle' && phase !== 'error') fail();
-  });
-  film.addEventListener('ended', () => {
-    command += 1;
-    clearLoadTimer();
-    phase = 'ended';
-    announce('Ritual film finished.');
-    updateControl();
-  });
+  film.pause();
 
-  function paint(time) {
+  function announce(message) { if (status) status.textContent = message; }
+  function fail() {
+    clearTimeout(loadTimer);
+    loaded = false;
+    failed = true;
+    cancelAnimationFrame(frame);
     frame = 0;
-    const dt = Math.min((time - (last || time - 16)) / 1000, .05);
-    last = time;
-    const ease = 1 - Math.exp(-dt / .24);
-    x += (tx - x) * ease;
-    y += (ty - y) * ease;
-    scene.style.setProperty('--film-x', `${x.toFixed(3)}px`);
-    scene.style.setProperty('--film-y', `${y.toFixed(3)}px`);
-    if (Math.abs(tx - x) > .005 || Math.abs(ty - y) > .005) {
-      frame = requestAnimationFrame(paint);
-    }
+    hero.classList.remove('film-ready');
+    announce('The bottle image is available. Move over it again to retry the interaction.');
+  }
+  function load() {
+    if (film.getAttribute('src') && !failed) return;
+    const source = film.dataset.src;
+    if (!source) return;
+    failed = false;
+    film.src = source;
+    film.load();
+    clearTimeout(loadTimer);
+    loadTimer = setTimeout(() => { if (!loaded) fail(); }, 20000);
   }
   function wake() {
-    if (!frame && visible && !document.hidden && !reduced.matches && finePointer.matches) {
+    if (!frame && loaded && visible && !document.hidden && !reduced.matches) {
       last = 0;
       frame = requestAnimationFrame(paint);
     }
   }
-  function resetMotion(immediate = false) {
-    tx = ty = 0;
-    if (immediate) {
-      cancelAnimationFrame(frame);
-      frame = 0;
-      x = y = 0;
-      scene.style.setProperty('--film-x', '0px');
-      scene.style.setProperty('--film-y', '0px');
+  function paint(time) {
+    frame = 0;
+    if (!visible || document.hidden || reduced.matches || !loaded) return;
+    const dt = Math.min((time - (last || time - 16)) / 1000, .05);
+    last = time;
+    // Cap the physical speed even after a fast sweep. Give the suspended
+    // drop the slowest passage, then gently settle when the hand stops.
+    const speed = position >= 4.1 && position <= 7.2 ? .38 : .78;
+    if (!film.seeking) {
+      const step = Math.min(speed * dt, (target - position) * (1 - Math.exp(-dt / .32)));
+      if (step > .000001) {
+        position = Math.min(end, position + step);
+        film.currentTime = position;
+      }
+    }
+    const ease = 1 - Math.exp(-dt / .3);
+    x += (tx - x) * ease;
+    y += (ty - y) * ease;
+    scene.style.setProperty('--film-x', `${x.toFixed(3)}px`);
+    scene.style.setProperty('--film-y', `${y.toFixed(3)}px`);
+    if (target - position > .001 || Math.abs(tx - x) > .005 || Math.abs(ty - y) > .005) {
+      frame = requestAnimationFrame(paint);
+    }
+  }
+  function advance(amount, direct = false) {
+    if (!visible || document.hidden) return;
+    if (position >= end - .06) {
+      // Both endpoints are closed. Start a fresh ritual only on new input.
+      position = target = START;
+      if (loaded) film.currentTime = START;
+    }
+    target = Math.min(end, position + .85, target + amount);
+    load();
+    if (direct && loaded) {
+      position = target;
+      film.currentTime = position;
     } else wake();
   }
+  function suspend() {
+    previous = null;
+    target = position;
+    tx = ty = x = y = 0;
+    cancelAnimationFrame(frame);
+    frame = 0;
+    scene.style.setProperty('--film-x', '0px');
+    scene.style.setProperty('--film-y', '0px');
+    film.pause();
+  }
+  film.addEventListener('loadeddata', () => {
+    if (failed) return;
+    clearTimeout(loadTimer);
+    loaded = true;
+    end = Number.isFinite(film.duration) ? Math.max(START, film.duration - .12) : 9.8;
+    film.pause();
+    film.currentTime = position;
+    if (reduced.matches) { position = target; film.currentTime = position; }
+    wake();
+  });
+  film.addEventListener('seeked', () => {
+    if (loaded && !failed) hero.classList.add('film-ready');
+  });
+  film.addEventListener('error', fail);
+
   hero.addEventListener('pointermove', event => {
-    if (event.pointerType === 'touch' || reduced.matches || !finePointer.matches) return;
-    const rect = scene.getBoundingClientRect();
-    const inMedia = event.clientX >= rect.left + rect.width * .45 &&
-      event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
-    if (!inMedia || event.target.closest('.nav,.copy,.film-controls,.mobile-panel')) {
-      resetMotion();
+    if (reduced.matches || !visible || document.hidden) return;
+    if (event.target.closest('button,a,input,select,.nav,.mobile-panel')) {
+      previous = null;
       return;
     }
-    tx = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)) * 4;
-    ty = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1)) * 3;
-    wake();
-  }, {passive: true});
-  hero.addEventListener('pointerleave', () => resetMotion());
-  hero.addEventListener('pointercancel', () => resetMotion());
+    if (event.pointerType === 'touch' && !event.target.closest('#bottle-viewer')) return;
+    if (event.pointerType !== 'touch' && !finePointer.matches) return;
+    if (!previous) {
+      previous = {x:event.clientX, y:event.clientY};
+      if (event.pointerType !== 'touch') advance(.35);
+      return;
+    }
+    const dx = event.clientX - previous.x, dy = event.clientY - previous.y;
+    previous = {x:event.clientX, y:event.clientY};
+    // Vertical touch movement remains ordinary page scrolling.
+    if (event.pointerType === 'touch' && Math.abs(dy) > Math.abs(dx)) return;
+    const distance = Math.min(60, Math.hypot(dx, dy));
+    if (distance < .5) return;
+    const rect = scene.getBoundingClientRect();
+    tx = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)) * 3;
+    ty = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1)) * 2;
+    advance(distance * .012);
+  }, {passive:true});
+  scene.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch') previous = {x:event.clientX,y:event.clientY};
+  }, {passive:true});
+  hero.addEventListener('pointerleave', () => { previous = null; tx = ty = 0; wake(); });
+  hero.addEventListener('pointercancel', suspend);
+  hero.addEventListener('pointerup', () => { previous = null; });
+  scene.addEventListener('keydown', event => {
+    if (['ArrowRight','ArrowUp',' '].includes(event.key)) {
+      event.preventDefault();
+      advance(.6, reduced.matches);
+    }
+  });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (!visible) {
-        stop('hidden');
-        resetMotion(true);
-      }
+      if (!visible) suspend();
     }).observe(hero);
   }
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stop('hidden');
-      resetMotion(true);
-    }
-  });
-  reduced.addEventListener('change', () => {
-    stop('preference');
-    resetMotion(true);
-  });
-  finePointer.addEventListener('change', () => resetMotion(true));
-  window.addEventListener('blur', () => resetMotion(true));
+  document.addEventListener('visibilitychange', () => { if (document.hidden) suspend(); });
+  reduced.addEventListener('change', suspend);
+  finePointer.addEventListener('change', suspend);
+  window.addEventListener('blur', suspend);
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      closeMenu(true);
-      stop('explicit');
-      resetMotion(true);
-    }
+    if (event.key === 'Escape') { closeMenu(true); suspend(); }
   });
-  updateControl();
 })();

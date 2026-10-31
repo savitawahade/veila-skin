@@ -9,16 +9,17 @@ A responsive skincare brand and storefront concept in the private repository [sa
 Open `index.html` in Chrome, or run from the repository:
 
 ```sh
-python3 -m http.server 4173 --bind 127.0.0.1
+python3 tools/preview.py
 ```
 
-Visit http://127.0.0.1:4173/. No build or package installation is required. Google Fonts needs internet access; system font fallbacks are provided.
+Visit http://127.0.0.1:4173/veila-hero.html. No build or package installation is required. Google Fonts needs internet access; system font fallbacks are provided.
 
 ## Current experience
 
-- The hero displays a product poster first. The video is requested only after **Play the ritual** is activated. It supports pause, resume, replay, loading feedback and retry after a failure. Playback pauses when the hero leaves view or the browser tab is hidden. There is no autoplay or mouse-controlled video seeking.
-- Fine-pointer movement adds a small, eased shift to the product composition. The transparent water-drop CTA changes its outline gently within its fixed location. Reduced-motion preferences disable both effects; explicit film playback remains available.
-- On narrow screens, navigation, copy, the product film and its controls follow normal page flow. Small phones trim empty space beside the bottle while preserving the full image height, bottle and raised dropper. The product grid has one column on small phones, two at intermediate widths and three on wide screens. Product text is 16px, secondary information is at least 12px, and interactive controls have comfortable touch targets.
+- The hero displays a product poster first. Moving the mouse loads the frame-accurate film and gently advances the bottle opening, slow serum drop and closing ritual. There is no play button, autoplay or reverse-droplet motion. Movement eases to a stop after input ends, and stops immediately offscreen or in a hidden tab.
+- Fast pointer movement cannot skip through the action: progress is capped at 0.78 film seconds per second, slowing to 0.38 during the drop. Horizontal touch gestures and Right Arrow/Space on the focused bottle provide alternatives. Reduced-motion users get a still image with optional discrete keyboard steps.
+- Fine-pointer movement also adds a small, eased shift to the composition. The transparent water-drop CTA gently morphs within its fixed location.
+- On narrow screens, navigation, copy, the product film follow normal page flow. Small phones trim empty space beside the bottle while preserving the full image height, bottle and raised dropper. The product grid has one column on small phones, two at intermediate widths and three on wide screens. Product text is 16px, secondary information is at least 12px, and interactive controls have comfortable touch targets.
 - Fifteen Veila concepts cover cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and ritual sets. Category filters, search, sorting, progressive collection loading and product dialogs support browsing.
 - The Dewdrop serum uses a consistent packaging master across hero and catalog imagery. The Daily Ritual Set displays the same cleanser, serum and moisturiser photographs used by their individual products. The gel moisturiser image matches its named product.
 - The ingredient library, product ingredient explorer, ritual, philosophy and FAQ explain the collection. The preview bag supports quantities, removal and subtotal calculation; it is stored only in the visitor's browser.
@@ -32,12 +33,12 @@ The retail structure references [Sephora India's skincare collection](https://se
 ## Main files
 
 - `design/veila-hero.html`: complete page and hero media references.
-- `design/hero-film.js`: poster-first media lifecycle, explicit playback, restrained pointer motion and mobile navigation.
+- `design/hero-film.js`: poster-first media lifecycle, gesture-driven frame progression, restrained pointer motion and mobile navigation.
 - `design/water-button.js`: local droplet-outline animation and press feedback.
 - `design/hero-refined.css`: responsive hero, safe bottle/dropper framing and transparent CTA.
 - `design/storefront.js`: catalog, filtering, product details, ingredient explorer and browser-local bag.
 - `design/storefront.css` and `design/veila-refined.css`: collection, editorial sections, dialogs, typography and responsive layouts.
-- `design/assets/veila-hero-v4/`: canonical bottle master, `poster.jpg` and `ritual-final.mp4` for the current hero direction.
+- `design/assets/veila-hero-v4/`: canonical bottle master, `poster.jpg` and `ritual-interactive.mp4` for the current hero direction.
 - `design/assets/veila-products/`: catalog photographs, including the canonical serum and corrected gel moisturiser.
 - `tests/hero-motion.test.cjs`: media lifecycle, interaction and reduced-motion regression checks.
 
@@ -59,4 +60,6 @@ node --test tests/hero-motion.test.cjs
 git diff --check
 ```
 
-Before publishing, visually verify desktop and small-phone layouts, enlarged text, keyboard navigation, film loading/retry and playback, product filters, ingredient selection, dialogs and bag persistence. Verify each final media asset against the canonical packaging and confirm product information separately from this concept build.
+Before publishing, visually verify desktop and small-phone layouts, enlarged text, keyboard navigation, film loading/retry and gesture-controlled motion, product filters, ingredient selection, dialogs and bag persistence. Verify each final media asset against the canonical packaging and confirm product information separately from this concept build.
+
+For HTTP previews, use a server with byte-range support for video seeking. Opening the local HTML directly in Chrome also works. The original corrected film remains archived as `ritual-final.mp4`; `tools/prepare-interaction-film.swift` encodes its seekable derivative.

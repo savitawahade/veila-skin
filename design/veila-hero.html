@@ -24,17 +24,17 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 .scene canvas{position:absolute;inset:0}.scene canvas[hidden]{display:none}
 </style>
-<link rel="stylesheet" href="storefront.css">
-<link rel="stylesheet" href="veila-refined.css">
-<link rel="stylesheet" href="hero-refined.css">
+<link rel="stylesheet" href="storefront.css?v=5">
+<link rel="stylesheet" href="veila-refined.css?v=5">
+<link rel="stylesheet" href="hero-refined.css?v=5">
 </head>
 <body>
 <a class="skip-link" href="#collection">Skip to collection</a>
 <main>
 <section class="hero film-hero" id="hero" aria-label="Veila Skin introduction">
-  <div class="scene hero-film-scene" id="bottle-viewer" aria-label="Veila Dewdrop serum film with aloe and oats">
+  <div class="scene hero-film-scene" id="bottle-viewer" role="group" tabindex="0" aria-label="Interactive Dewdrop serum bottle" aria-describedby="bottle-instructions">
     <img class="film-poster" src="assets/veila-hero-v4/poster.jpg" alt="Veila Dewdrop Daily Serum on pale stone with aloe and oats" width="1280" height="720" fetchpriority="high">
-    <video id="hero-film" muted playsinline preload="none" poster="assets/veila-hero-v4/poster.jpg" data-playback-src="assets/veila-hero-v4/ritual-final.mp4" aria-label="Veila serum ritual: a glass dropper opens and releases serum" tabindex="-1"></video>
+    <video id="hero-film" muted playsinline preload="none" poster="assets/veila-hero-v4/poster.jpg" data-src="assets/veila-hero-v4/ritual-interactive.mp4" aria-label="Veila serum ritual: a glass dropper opens and releases serum" tabindex="-1"></video>
   </div>
   <div class="shade" aria-hidden="true"></div>
   <header class="nav" aria-label="Main navigation">
@@ -50,7 +50,8 @@
     <p class="intro">Aloe, oat and hyaluronic acid. Discover the ingredient story behind our signature Dewdrop Daily Serum.</p>
     <div class="cta-row"><span class="water-button-anchor"><button class="primary water-button" type="button" data-jump="collection"><span class="water-button-label">Explore Veila <span aria-hidden="true">↗</span></span></button></span><button class="text-link" type="button" data-jump="philosophy">Our philosophy</button></div>
   </section>
-  <div class="film-controls"><span class="film-hint">A moment with Dewdrop</span><button type="button" class="film-toggle" id="film-toggle" aria-pressed="false">Play the ritual</button><span id="film-status" class="sr-only" role="status" aria-live="polite"></span></div>
+  <p id="bottle-instructions" class="sr-only">Move your mouse to gently open the bottle and release a slow serum drop. On touch screens, swipe horizontally over the bottle. With the bottle focused, press Right Arrow or Space to move the ritual forward.</p>
+  <span id="film-status" class="sr-only" role="status" aria-live="polite"></span>
 
 </section>
 <div class="editorial-strip"><span>VEILA / THE EVERYDAY COLLECTION</span><p class="serif">A softer kind of <em>everyday.</em></p><a href="#ingredients">Get to know what’s inside ↗</a></div>
@@ -92,8 +93,8 @@
 <div class="toast" id="preview-status" role="status" aria-live="polite"></div>
 <dialog class="shop-dialog" id="product-dialog" aria-labelledby="product-dialog-title"><button type="button" class="dialog-close" data-close aria-label="Close product details" autofocus>×</button><div id="product-detail"></div></dialog>
 <dialog class="shop-dialog bag-dialog" id="bag-dialog" aria-labelledby="bag-title"><button type="button" class="dialog-close" data-close aria-label="Close shopping bag" autofocus>×</button><div class="bag-content"><p class="section-kicker">A moment of your own</p><h2 class="serif" id="bag-title">Your ritual bag.</h2><p class="bag-intro">Your collection, coming together. This preview bag is saved only in this browser.</p><div id="bag-items"></div><div class="bag-total"><span>Concept subtotal</span><strong id="bag-total">₹0</strong></div><p class="bag-intro">Shopping preview · Checkout isn't open yet. No orders or payments are taken.</p><button class="primary" type="button" data-continue>Continue exploring ↗</button></div></dialog>
-<script src="hero-film.js"></script>
-<script src="water-button.js"></script>
-<script src="storefront.js"></script>
+<script src="hero-film.js?v=7"></script>
+<script src="water-button.js?v=5"></script>
+<script src="storefront.js?v=5"></script>
 </body>
 </html>

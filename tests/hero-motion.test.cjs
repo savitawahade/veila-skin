@@ -68,75 +68,76 @@ function environment(reducedMotion = false) {
 }
 const flush = () => new Promise(resolve => setImmediate(resolve));
 
-test('poster-first: initialization, pointer movement and reduced motion do not request media', () => {
-  for (const reduced of [false, true]) {
-    const env=environment(reduced);env.run('hero-film.js');
-    fire(env.nodes['#hero'], 'pointermove', {pointerType:'mouse',clientX:800,clientY:300});
-    assert.equal(env.film.getAttribute('src'), null);
-    assert.equal(env.film.loadCount, 0);
-    assert.equal(env.film.playCount, 0);
-    assert.equal(env.film.currentTime, 0);
+function tick(env, from, duration) {
+  for(let time=from;time<from+duration;time+=16) {
+    const callbacks=[...env.frames.values()];env.frames.clear();
+    callbacks.forEach(callback=>callback(time));
   }
-});
+}
+function move(env,x,y=300) { fire(env.nodes['#hero'],'pointermove',{pointerType:'mouse',clientX:x,clientY:y}); }
+function ready(env) { env.film.duration=10;env.film.readyState=2;fire(env.film,'loadeddata');fire(env.film,'seeked'); }
 
-test('Play starts at zero; explicit pause resumes; ended playback starts over', async () => {
+test('poster first: only a gesture requests frames and native playback never starts', () => {
   const env=environment();env.run('hero-film.js');
-  const toggle=env.nodes['#film-toggle'];
-  env.film.currentTime=8;
-  fire(toggle,'click');await flush();
-  assert.equal(env.film.src,'compressed.mp4');
-  assert.equal(env.film.currentTime,0);
-  assert.equal(toggle.textContent,'Pause film');
-  env.film.currentTime=4;
-  fire(toggle,'click');
-  assert.equal(toggle.textContent,'Resume ritual');
+  assert.equal(env.film.src,null);
+  move(env,700);ready(env);tick(env,16,1000);
+  assert.equal(env.film.src,'scrub.mp4');
+  assert.equal(env.film.playCount,0);
   assert.equal(env.film.paused,true);
-  fire(toggle,'click');await flush();
-  assert.equal(env.film.currentTime,4);
-  fire(env.film,'ended');env.film.currentTime=10;
-  fire(toggle,'click');await flush();
-  assert.equal(env.film.currentTime,0);
+  assert.ok(env.film.currentTime>1.6);
+  assert.ok(env.nodes['#hero'].classes.has('film-ready'));
 });
 
-test('failed media retains poster, announces failure and can retry', async () => {
-  const env=environment();env.run('hero-film.js');
-  env.film.play=()=>Promise.reject(new Error('404'));
-  fire(env.nodes['#film-toggle'],'click');await flush();
-  assert.equal(env.nodes['#film-toggle'].textContent,'Retry film');
-  assert.equal(env.nodes['#film-toggle'].disabled,false);
-  assert.match(env.nodes['#film-status'].textContent,/could not load/);
-  assert.equal(env.nodes['#hero'].classes.has('film-ready'),false);
-  env.film.play=()=>Promise.resolve();
-  fire(env.nodes['#film-toggle'],'click');await flush();
-  assert.equal(env.film.loadCount,2);
-  assert.equal(env.nodes['#film-toggle'].textContent,'Pause film');
+test('fast movement is speed limited, forward only, then settles without looping', () => {
+  const env=environment();env.run('hero-film.js');move(env,500);ready(env);
+  let previous=env.film.currentTime;
+  for(let time=16;time<10000;time+=16) {
+    move(env,time%32===0?950:500);
+    tick(env,time,16);
+    assert.ok(env.film.currentTime>=previous);
+    assert.ok(env.film.currentTime-previous<=.78*.016+.00001);
+    if(previous>=4.1&&previous<=7.2) assert.ok(env.film.currentTime-previous<=.38*.016+.00001);
+    previous=env.film.currentTime;
+  }
+  tick(env,10016,6000);
+  const settled=env.film.currentTime;
+  tick(env,16016,6000);
+  assert.equal(env.film.currentTime,settled);
+  assert.equal(env.frames.size,0);
+  assert.equal(env.film.playCount,0);
 });
 
-test('pending play completion cannot restart hidden film or override a cancellation', async () => {
-  const env=environment();env.run('hero-film.js');
-  let resolve;
-  env.film.play=()=>new Promise(done=>{resolve=done;});
-  fire(env.nodes['#film-toggle'],'click');
-  assert.equal(env.nodes['#film-toggle'].disabled,true);
+test('hidden and offscreen interaction stops and does not accumulate gestures', () => {
+  const env=environment();env.run('hero-film.js');move(env,800);ready(env);tick(env,16,200);
+  env.intersect(false);
+  const stopped=env.film.currentTime;
+  move(env,900);tick(env,216,1000);
+  assert.equal(env.film.currentTime,stopped);
+  assert.equal(env.frames.size,0);
+  env.intersect(true);move(env,850);tick(env,1216,200);
+  assert.ok(env.film.currentTime>stopped);
   env.document.hidden=true;fire(env.document,'visibilitychange');
-  resolve();await flush();
-  assert.equal(env.film.paused,true);
-  assert.equal(env.nodes['#film-toggle'].textContent,'Play the ritual');
-  assert.equal(env.nodes['#film-toggle'].disabled,false);
+  assert.equal(env.frames.size,0);
 });
 
-test('source errors and stalled loads expose retry; menu remains usable', async () => {
+test('reduced motion stays still for pointer movement and allows explicit keyboard steps', () => {
+  const env=environment(true);env.run('hero-film.js');move(env,850);
+  assert.equal(env.film.loadCount,0);
+  fire(env.nodes['#bottle-viewer'],'keydown',{key:'ArrowRight'});ready(env);
+  assert.equal(env.film.currentTime,2.2);
+  assert.equal(env.frames.size,0);
+  assert.equal(env.film.playCount,0);
+});
+
+test('media errors and timeouts retain the poster and next gesture can retry', () => {
   for (const failure of ['error','timeout']) {
-    const env=environment();env.run('hero-film.js');
-    env.film.play=()=>new Promise(()=>{});
-    fire(env.nodes['#film-toggle'],'click');
-    if(failure==='error') fire(env.film,'error');
-    else [...env.timers.values()][0]();
-    assert.equal(env.nodes['#film-toggle'].textContent,'Retry film');
-    fire(env.nodes['#menu-toggle'],'click');
-    assert.equal(env.nodes['#menu-toggle'].getAttribute('aria-expanded'),'true');
-    fire(env.document,'keydown',{key:'Escape'});
-    assert.equal(env.nodes['#menu-toggle'].getAttribute('aria-expanded'),'false');
+    const env=environment();env.run('hero-film.js');move(env,800);
+    if(failure==='error') fire(env.film,'error'); else [...env.timers.values()][0]();
+    assert.equal(env.nodes['#hero'].classes.has('film-ready'),false);
+    assert.match(env.nodes['#film-status'].textContent,/retry/);
+    move(env,850);assert.equal(env.film.loadCount,2);
+    ready(env);tick(env,16,500);
+    assert.ok(env.nodes['#hero'].classes.has('film-ready'));
   }
 });
 
