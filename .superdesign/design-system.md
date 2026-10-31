@@ -30,3 +30,6 @@ The hero opens its photographic dropper in response to pointer movement, with a 
 
 ### FAQ typography and voice
 The FAQ section pairs Lora 400 for the editorial heading with DM Sans 400/500 for questions and answers. Use readable 14px body text, generous line height, restrained numbering, and native expandable answers. Keep the language specific to Veila products and honest about the collection's development stage; avoid technical preview terminology and invented shipping promises.
+
+### Explore Veila water effect
+The hero's Explore Veila button has a restrained pointer-origin water ripple and a soft cursor-following highlight. Keep the label above the effect, clip waves to the button, cap active rings at four, and preserve native collection navigation. Touch press and keyboard focus/activation also trigger the effect; reduced-motion preference suppresses animation.
