@@ -17,19 +17,24 @@ Visit http://127.0.0.1:4173/. No build or package installation is required. Goog
 ## Design and functionality
 
 - Full-viewport hero: 48 still frames controlled by mouse movement or a touch/keyboard slider. No video element, autoplay or time-driven playback. Reduced-motion preferences disable pointer scrubbing; the slider remains available.
-- Six original Veila concept products with responsive packaging illustrations, sizes, illustrative INR prices, texture directions and proposed ingredient stories.
-- Category filters, product/ingredient search, price/name sorting and empty results handling.
+- Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Fifteen coordinated AI-generated product photographs show the product type and proposed ingredient highlights directly on the packaging.
+- Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
+- Visible ingredient chips on every card and an interactive ingredient atelier with a product selector and individual ingredient notes.
+- Sunscreen remains a development concept: no tested SPF, UVA rating or performance claim is asserted.
 - Accessible native product dialogs with ingredient, ritual and delivery information.
 - Preview shopping bag with quantity adjustment, removal, calculated subtotal and local browser persistence. No checkout, payments, orders or customer data collection.
 - Ritual, philosophy, FAQ and footer sections; working navigation and mobile menu.
 
-The retail structure references [Sephora India's skincare collection](https://sephora.in/collection/skincare). Veila branding, product names, descriptions and packaging illustrations are original concept content. Formulas, pricing, availability, suitability, delivery and returns need confirmation before launch. No customer ratings, certifications or tested efficacy are asserted. Brand/domain availability has not been verified.
+The retail structure references [Sephora India's skincare collection](https://sephora.in/collection/skincare), with category coverage informed by [Hyphen's full collection](https://letshyphen.com/collections/all). Veila branding, product names, descriptions and packaging illustrations are original concept content. Formulas, pricing, availability, suitability, delivery and returns need confirmation before launch. No customer ratings, certifications or tested efficacy are asserted. Brand/domain availability has not been verified.
 
 ## Files
 
 - `design/veila-hero.html`: full page and hero interaction.
-- `design/storefront.css`: collection, editorial sections and dialogs.
-- `design/storefront.js`: concept catalog, filters, illustrations and browser-local bag.
+- `design/storefront.css`: base collection, editorial sections and dialogs.
+- `design/veila-refined.css`: photographic collection, ingredient atelier and refined responsive styling.
+- `design/assets/veila-products/`: fifteen labelled product photographs and their original photographic references, optimized as JPEGs.
+- `design/veila-art-direction.md`: image direction, catalog scope and source references.
+- `design/storefront.js`: concept catalog, ingredient explorer, filters and browser-local bag.
 - `design/assets/veila-frames/`: the 48 still images used by the hero.
 - `design/assets/veila-bottle-opening-8s.mp4`: approved source clip; never played by the website.
 - `design/veila-flow-prompt.txt`: original animation brief.
