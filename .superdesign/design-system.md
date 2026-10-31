@@ -24,3 +24,6 @@ Fifteen products span cleansers, toners, serums, moisturisers, sunscreen, masks,
 
 ### Current hero: photographic floating ingredients
 Use the transparent photographic layers in assets/veila-parallax. The bottle stays front-facing and moves gently with the pointer; aloe, oats and dewdrops move independently at different depths. Use small tilts, smooth easing and a warm ivory background. No literal 360-degree spin, autoplay or bottom control strip. The approved 10-second film is retained separately. Respect reduced-motion preferences.
+
+### Ingredient clarity and the opening ritual
+The hero opens its photographic dropper in response to pointer movement, with a short glass pipette and small serum drops. No looping playback. Ingredient imagery stays delicate, with three labelled directions: aloe, oat and hyaluronic acid. The eight-entry ingredient library uses a warm limestone still life, expandable serif ingredient headings and useful plain-language notes with references. The Veila approach section earns credibility through clear ingredient, routine and concept information; do not add fabricated clinical claims, reviews, testing badges or certifications.

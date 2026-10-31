@@ -16,9 +16,10 @@ Visit http://127.0.0.1:4173/. No build or package installation is required. Goog
 
 ## Design and functionality
 
-- Full-viewport photographic hero. Mouse movement gently moves the bottle, aloe, oats and dewdrops at different depths, with small tilts and smooth settling. The bottle remains front-facing and legible. Touch movement also responds without blocking page scrolling. Reduced-motion preferences disable the effect. No autoplay, 360° spin, slider, frame counter or bottom control strip.
+- Full-viewport photographic hero. Mouse movement gently moves the bottle, aloe, oats and dewdrops at different depths, with small tilts and smooth settling. The bottle remains front-facing and legible. Moving the pointer over the hero lifts the photographic cap and reveals a glass pipette; further movement releases bounded serum droplets into the neck. Leaving the hero closes the bottle. The bottle button supports tap/keyboard opening, with Escape to close. Touch movement also responds without blocking page scrolling. Reduced-motion preferences disable the effect. No autoplay, 360° spin, slider, frame counter or bottom control strip.
 - Fifteen original Veila concept products across ten skincare categories: cleansers, toners, serums, moisturisers, sunscreen, masks, essence pads, lip care, body care and sets. Fifteen coordinated AI-generated product photographs show the product type and proposed ingredient highlights directly on the packaging.
 - Category filters, product/ingredient search, price/name sorting, progressive collection loading and empty results handling.
+- An eight-entry ingredient library with editorial photography, expandable explanations, source links and links into the corresponding product explorer. A dedicated Veila approach section explains ingredient transparency, routine information and concept status.
 - Visible ingredient chips on every card and an interactive ingredient atelier with a product selector and individual ingredient notes.
 - Sunscreen remains a development concept: no tested SPF, UVA rating or performance claim is asserted.
 - Accessible native product dialogs with ingredient, ritual and delivery information.
@@ -31,7 +32,7 @@ The retail structure references [Sephora India's skincare collection](https://se
 
 - `design/veila-hero.html`: full page.
 - `design/hero-parallax.js`: lightweight pointer-following layers, easing, reduced-motion support and mobile navigation.
-- `design/assets/veila-parallax/`: transparent photographic bottle, aloe and oat layers.
+- `design/assets/veila-parallax/`: transparent photographic bottle, open bottle, aloe, oat and serum layers, plus the ingredient editorial still life.
 - `design/veila-parallax-prompts.txt`: built-in image generation prompts for those layers.
 - `design/hero-refined.css`: refined dropper hero composition.
 - `design/storefront.css`: base collection, editorial sections and dialogs.
@@ -53,4 +54,4 @@ Open this repository folder in Antigravity. Edit the same source files, preview 
 
 ## Verification
 
-Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, desktop/mobile layout, removed controls and browser errors. The separate MP4 was verified as exactly 10 seconds.
+Checked JavaScript syntax, desktop/mobile layouts, category filtering, ingredient search, price sorting, product dialogs, bag quantity/subtotal, removal, empty states, and persistence after reload. The photographic hero is checked for independent layer movement, cap opening and closing, bounded droplets, ingredient library links, desktop/mobile layout, removed controls and browser errors. The separate MP4 was verified as exactly 10 seconds.
