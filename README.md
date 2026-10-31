@@ -2,7 +2,7 @@
 
 Your daily moment of care.
 
-A responsive skincare storefront concept in the existing private repository [savitawahade/veila-skin](https://github.com/savitawahade/veila-skin).
+A responsive skincare storefront concept in the repository [savitawahade/veila-skin](https://github.com/savitawahade/veila-skin).
 
 ## Preview
 
@@ -74,6 +74,6 @@ Verified unchanged first-screen computed styles at 1440px and 390px, mobile 16px
 
 Run `python3 scripts/build-pages.py` to produce the static website in `dist/`. The published entry page is an exact copy of `design/veila-hero.html`; archived media, design briefs, local hosting checkouts and repository history are excluded.
 
-GitHub currently blocks Pages for this private repository on the account’s plan. Keeping `savitawahade/veila-skin` private requires GitHub Pro (or another eligible plan). Once eligible, open Settings → Pages and select GitHub Actions as the source, then run the Deploy Veila to GitHub Pages workflow. Future website changes pushed to `main` deploy automatically.
+The repository is public, as authorized, to use free GitHub Pages. Settings → Pages uses GitHub Actions as the publishing source. Run the Deploy Veila to GitHub Pages workflow manually when needed; future website changes pushed to `main` deploy automatically.
 
-Expected address after successful deployment: https://savitawahade.github.io/veila-skin/ (not live until deployment succeeds).
+GitHub Pages website address: https://savitawahade.github.io/veila-skin/.
