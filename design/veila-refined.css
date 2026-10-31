@@ -169,3 +169,15 @@
 .detail-art>.product-set{min-height:0}
 .ingredient-picture:has(>.product-set){aspect-ratio:1.8/1;border-radius:24px 24px 3px 3px}
 .ingredient-picture>.product-set{padding:12px 0 48px}
+
+/* Customer care stays clearly labelled as a demo until real contacts are supplied. */
+.customer-care{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:42px;padding:40px 0;border-top:1px solid #ffffff30}
+.customer-care-intro .section-kicker{font-size:12px;color:#d5decf;line-height:1.6}
+.customer-care h2{font-size:clamp(32px,4vw,46px);font-weight:400;line-height:1.12;margin:0 0 20px}
+.customer-care h2 em{font-weight:400;color:#e1e8d8}
+.customer-care-intro>p:last-child{max-width:420px;font-size:16px;line-height:1.75;color:#d5decf;margin:0}
+.customer-care-details dl{display:grid;gap:24px;margin:0}
+.customer-care-details dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d5decf;margin-bottom:8px}
+.customer-care-details dd{font-size:22px;line-height:1.5;margin:0;overflow-wrap:anywhere}
+.customer-care-note{font-size:14px;line-height:1.75;color:#d5decf;max-width:460px;margin:24px 0 0}
+@media(max-width:760px){.customer-care{grid-template-columns:minmax(0,1fr);gap:30px;padding:32px 0}.customer-care-details dd{font-size:20px}}
